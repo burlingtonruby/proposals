@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140115010054) do
     t.datetime "updated_at"
   end
 
+  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -31,7 +33,5 @@ ActiveRecord::Schema.define(version: 20140115010054) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id"
 
 end
