@@ -1,0 +1,11 @@
+brett:
+  provider: github
+  uid: 1
+  name: Brett Chalupa
+  email: brett@tacobell.com
+
+pete:
+  provider: github
+  uid: 2
+  name: Peter Brown
+  email: pete@sebastian.com

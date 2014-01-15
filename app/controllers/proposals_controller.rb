@@ -1,10 +1,17 @@
 class ProposalsController < ApplicationController
+  include UserHelper
+
   def index
-    @proposals = Proposal.all
+    if current_user
+      @proposals = current_user.proposals
+    else
+      redirect_to root_path
+      flash[:alert] = "Sorry, but you can't see that."
+    end
   end
 
   def create
-    @proposal = Proposal.new(proposal_params)
+    @proposal = current_user.proposals.build(proposal_params)
 
     if @proposal.save
       redirect_to @proposal
@@ -15,11 +22,21 @@ class ProposalsController < ApplicationController
   end
 
   def new
-    @proposal = Proposal.new
+    if current_user
+      @proposal = Proposal.new
+    else
+      redirect_to root_path
+      flash[:alert] = "You must sign in to create a proposal."
+    end
   end
 
   def show
     @proposal = Proposal.find(params[:id])
+
+    unless current_user && current_user == @proposal.user
+      redirect_to root_path
+      flash[:alert] = "You must sign in to view your proposals."
+    end
   end
 
   def edit

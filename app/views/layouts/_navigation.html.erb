@@ -7,9 +7,14 @@
 
   <section class="top-bar-section">
    <ul class="right">
-     <li><%= link_to "View Proposals", proposals_path %></li>
-     <li></li>
-     <li></li>
+     <% if current_user %>
+       <li><%= link_to "Submit Proposal", new_proposal_path %></li>
+       <li><%= link_to "Your Proposals", proposals_path %></li>
+       <li><%= link_to "Your Profile", current_user %></li>
+       <li><%= link_to "Sign Out", logout_path, method: :delete %></li>
+     <% else %>
+       <li><%= link_to 'Sign In w/ GitHub', '/auth/github' %></li>
+     <% end %>
    </ul>
   </section>
  </nav>
