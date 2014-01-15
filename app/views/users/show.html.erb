@@ -1,6 +1,11 @@
 <div class="row">
   <div class="small-12 columns">
     <h1><%= @user.name %></h1>
+
+    <% if @user.photo.present? %>
+      <%= image_tag @user.photo.url(:medium) %>
+    <% end %>
+
     <p><%= @user.bio %></p>
 
     <ul>

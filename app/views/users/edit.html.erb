@@ -4,11 +4,14 @@
   </div>
 </div>
 
-<%= form_for @user do |f| %>
-  <div class="row">
-    <div class="small-6 columns">
+<div class="row">
+  <%= form_for @user do |f| %>
+    <div class="small-12 medium-6 columns">
       <%= f.label :name %>
       <%= f.text_field :name %>
+
+      <%= f.label :photo, "Photo of You (this will be used on the website)" %>
+      <%= f.file_field :photo %>
 
       <%= f.label :bio %>
       <%= f.text_area :bio, placeholder: 'This will go on the conference website, so be sure to check for typos.' %>
@@ -24,5 +27,13 @@
 
       <%= f.submit "Update Profile", class: 'button' %>
     </div>
+  <% end %>
+
+  <div class="small-12 medium-6 columns">
+    <% if @user.photo.present? %>
+      <h5>Your Current Photo</h5>
+      <%= image_tag @user.photo.url(:medium) %>
+    <% end %>
   </div>
-<% end %>
+</div>
+
