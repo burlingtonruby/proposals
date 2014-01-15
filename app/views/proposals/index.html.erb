@@ -3,7 +3,7 @@
     <h1>Proposals</h1>
 
     <ul class="small-block-grid-3">
-      <%= render @proposals %>
+      <%= render partial: 'proposal_list', collection: @proposals, as: :proposal %>
     </ul>
   </div>
 </div>

@@ -1,13 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  abstract: MyText
-  notes: MyText
-  pitch: MyText
-
-two:
-  title: MyString
-  abstract: MyText
-  notes: MyText
-  pitch: MyText
+rails_doesnt_scale:
+  title: Rails Doesn't Scale
+  abstract: Everyone knows it, everyone says it. I am here to prove it. Rails does not scale.
+  notes: This talk is a very serious talk with over 100 slides.
+  pitch: This talk will change your life.

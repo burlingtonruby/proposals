@@ -1,0 +1,19 @@
+<%= form_for @proposal do |f| %>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: 'Make it great' %>
+
+      <%= f.label :abstract %>
+      <%= f.text_area :abstract, placeholder: 'What is your talk about?' %>
+
+      <%= f.label :notes %>
+      <%= f.text_area :notes, placeholder: 'What should we know about your talk that is not in the abstract?' %>
+
+      <%= f.label :pitch %>
+      <%= f.text_area :pitch, placeholder: 'Why should we pick you?' %>
+
+      <%= f.submit button_text, class: 'button' %>
+    </div>
+  </div>
+<% end %>

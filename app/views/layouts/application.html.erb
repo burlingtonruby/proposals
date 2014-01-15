@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <% if flash.present? %>
+      <div id="notifications" class="row">
+        <div class="small-12 columns">
+          <% flash.each do |k, v| %>
+            <div class="alert-box <%= k %>">
+              <%= v %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
