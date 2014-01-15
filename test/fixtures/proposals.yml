@@ -3,3 +3,18 @@ rails_doesnt_scale:
   abstract: Everyone knows it, everyone says it. I am here to prove it. Rails does not scale.
   notes: This talk is a very serious talk with over 100 slides.
   pitch: This talk will change your life.
+  user: brett
+
+coffeescript_gave_me_six_pack_abs:
+  title: CoffeeScript Gave Me Six Pack Abs
+  abstract: I once used JavaScript, but then I found CoffeeScript. Now I have six pack abs.
+  notes: This talk will get you ripped.
+  pitch: You probably wish you had six pack abs.
+  user: brett
+
+php_forever:
+  title: PHP Forever
+  abstract: PHP <3 Me
+  notes: PHPcon is nextmonth come out please
+  pitch: Really PHP is great
+  user: pete

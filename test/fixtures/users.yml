@@ -1,13 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+brett:
+  provider: github
+  uid: 1
+  name: Brett Chalupa
+  email: brett@tacobell.com
 
-one:
-  provider: MyString
-  uid: MyString
-  name: MyString
-  email: MyString
-
-two:
-  provider: MyString
-  uid: MyString
-  name: MyString
-  email: MyString
+pete:
+  provider: github
+  uid: 2
+  name: Peter Brown
+  email: pete@sebastian.com
