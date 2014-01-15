@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class UserHelperTest < ActionView::TestCase
   include UserHelper
 

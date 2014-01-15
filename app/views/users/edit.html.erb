@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Edit Your Profile</h2>
+  </div>
+</div>
+
+<%= form_for @user do |f| %>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :bio %>
+      <%= f.text_area :bio, placeholder: 'This will go on the conference website, so be sure to check for typos.' %>
+
+      <%= f.label :website, "Your Website" %>
+      <%= f.text_field :website %>
+
+      <%= f.label :github, "Your GitHub Username" %>
+      <%= f.text_field :github %>
+
+      <%= f.label :twitter, "Your Twitter Handle" %>
+      <%= f.text_field :twitter %>
+
+      <%= f.submit "Update Profile", class: 'button' %>
+    </div>
+  </div>
+<% end %>

@@ -1,13 +1,8 @@
 class ProposalsController < ApplicationController
-  include UserHelper
+  before_filter :require_authentication!
 
   def index
-    if current_user
-      @proposals = current_user.proposals
-    else
-      redirect_to root_path
-      flash[:alert] = "Sorry, but you can't see that."
-    end
+    @proposals = current_user.proposals
   end
 
   def create
@@ -22,21 +17,12 @@ class ProposalsController < ApplicationController
   end
 
   def new
-    if current_user
-      @proposal = Proposal.new
-    else
-      redirect_to root_path
-      flash[:alert] = "You must sign in to create a proposal."
-    end
+    @proposal = Proposal.new
   end
 
   def show
     @proposal = Proposal.find(params[:id])
-
-    unless current_user && current_user == @proposal.user
-      redirect_to root_path
-      flash[:alert] = "You must sign in to view your proposals."
-    end
+    require_permission!(@proposal.user)
   end
 
   def edit
@@ -55,9 +41,13 @@ class ProposalsController < ApplicationController
   end
 
   def destroy
-    Proposal.find(params[:id]).destroy
-    redirect_to proposals_path
-    flash[:notice] = 'Proposal destroyed.'
+    @proposal = Proposal.find(params[:id])
+
+    unless require_permission!(@proposal.user)
+      @proposal.destroy
+      redirect_to proposals_path
+      flash[:notice] = 'Proposal destroyed.'
+    end
   end
 
   private
