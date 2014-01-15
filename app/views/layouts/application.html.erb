@@ -11,19 +11,11 @@
   </head>
 
   <body>
-    <% if flash.present? %>
-      <div id="notifications" class="row">
-        <div class="small-12 columns">
-          <% flash.each do |k, v| %>
-            <div class="alert-box <%= k %>">
-              <%= v %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: 'layouts/navigation' %>
+    <%= render partial: 'layouts/notifications' %>
 
     <%= yield %>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
