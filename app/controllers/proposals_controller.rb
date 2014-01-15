@@ -32,6 +32,11 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.find(params[:id])
+
+    unless current_user && current_user == @proposal.user
+      redirect_to root_path
+      flash[:alert] = "You must sign in to view your proposals."
+    end
   end
 
   def edit

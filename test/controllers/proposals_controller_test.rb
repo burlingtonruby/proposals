@@ -4,6 +4,7 @@ class ProposalsControllerTest < ActionController::TestCase
   setup do
     @rails_doesnt_scale = proposals(:rails_doesnt_scale)
     @brett = users(:brett)
+    @pete = users(:pete)
   end
 
   test 'should get index if signed in' do
@@ -50,10 +51,18 @@ class ProposalsControllerTest < ActionController::TestCase
     assert_equal "You must sign in to create a proposal.", flash[:alert]
   end
 
-  test 'should show proposal' do
+  test 'should show proposal if proposal user is current_user ' do
+    sign_in @brett
     get :show, id: @rails_doesnt_scale
     assert_response :success
     assert_not_nil assigns(:proposal)
+  end
+
+  test 'show should redirect to root_path if proposal user is not current_user ' do
+    sign_in @pete
+    get :show, id: @rails_doesnt_scale
+    assert_redirected_to root_path
+    assert_equal "You must sign in to view your proposals.", flash[:alert]
   end
 
   test 'edit should render correct layout' do
