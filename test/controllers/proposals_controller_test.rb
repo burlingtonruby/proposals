@@ -14,10 +14,10 @@ class ProposalsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:proposals)
   end
 
-  test 'index should redirect to root if signed out' do
+  test 'get index should redirect to root if signed out' do
     get :index
     assert_redirected_to root_path
-    assert_equal "Sorry, but you can't see that.", flash[:alert]
+    assert_equal "You must sign in to do that.", flash[:alert]
   end
 
   test 'index should show current_users proposals' do
@@ -48,7 +48,7 @@ class ProposalsControllerTest < ActionController::TestCase
   test 'new should redirect to root if signed out' do
     get :new
     assert_redirected_to root_path
-    assert_equal "You must sign in to create a proposal.", flash[:alert]
+    assert_equal "You must sign in to do that.", flash[:alert]
   end
 
   test 'should show proposal if proposal user is current_user ' do
@@ -62,27 +62,37 @@ class ProposalsControllerTest < ActionController::TestCase
     sign_in @pete
     get :show, id: @rails_doesnt_scale
     assert_redirected_to root_path
-    assert_equal "You must sign in to view your proposals.", flash[:alert]
+    assert_equal "You do not have access to that.", flash[:alert]
   end
 
   test 'edit should render correct layout' do
+    sign_in @brett
     get :edit, id: @rails_doesnt_scale
     assert_template layout: 'layouts/application', partial: '_form'
     assert_not_nil assigns(:proposal)
   end
 
   test 'should update proposal' do
+    sign_in @brett
     patch :update, id: @rails_doesnt_scale.id, proposal: { title: "Rails Does Scale" }
     assert_redirected_to proposal_path(assigns(:proposal))
     assert_equal 'Proposal successfully updated.', flash[:success]
   end
 
   test 'should destroy proposal' do
+    sign_in @brett
     assert_difference('Proposal.count', -1) do
       delete :destroy, id: @rails_doesnt_scale.id
     end
 
     assert_redirected_to proposals_path
     assert_equal 'Proposal destroyed.', flash[:notice]
+  end
+
+  test 'should not destroy proposal if current_user is does not have persmission' do
+    sign_in @pete
+    delete :destroy, id: @rails_doesnt_scale.id
+    assert_redirected_to root_path
+    assert_equal "You do not have access to that.", flash[:alert]
   end
 end

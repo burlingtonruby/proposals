@@ -1,5 +1,14 @@
 <div class="row">
   <div class="small-12 columns">
     <h1><%= @user.name %></h1>
+    <p><%= @user.bio %></p>
+
+    <ul>
+      <li>Website: <%= link_to @user.website, @user.website %></li>
+      <li>Twitter: <%= link_to @user.twitter, "https://twitter.com/#{@user.twitter}" %></li>
+      <li>GitHub: <%= link_to @user.github, "https://github.com/#{@user.github}" %></li>
+    </ul>
+
+    <%= link_to "Edit Profile", edit_user_path(@user), class: "button small" %>
   </div>
 </div>
