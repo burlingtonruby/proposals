@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20140115010054) do
     t.string   "uid"
     t.string   "name"
     t.string   "email"
+    t.text     "bio"
+    t.string   "website"
+    t.string   "twitter"
+    t.string   "github"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
