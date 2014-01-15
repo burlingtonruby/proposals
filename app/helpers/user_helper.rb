@@ -17,8 +17,7 @@ module UserHelper
 
   def require_permission!(user)
     unless current_user && current_user == user
-      redirect_to root_path
-      flash[:alert] = "You do not have access to that."
+      render file: 'public/401.html', status: :unauthorized
     end
   end
 end

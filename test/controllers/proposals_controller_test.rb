@@ -61,8 +61,7 @@ class ProposalsControllerTest < ActionController::TestCase
   test 'show should redirect to root_path if proposal user is not current_user ' do
     sign_in @pete
     get :show, id: @rails_doesnt_scale
-    assert_redirected_to root_path
-    assert_equal "You do not have access to that.", flash[:alert]
+    assert_response 401
   end
 
   test 'edit should render correct layout' do
@@ -92,7 +91,6 @@ class ProposalsControllerTest < ActionController::TestCase
   test 'should not destroy proposal if current_user is does not have persmission' do
     sign_in @pete
     delete :destroy, id: @rails_doesnt_scale.id
-    assert_redirected_to root_path
-    assert_equal "You do not have access to that.", flash[:alert]
+    assert_response 401
   end
 end

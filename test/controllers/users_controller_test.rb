@@ -27,17 +27,21 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal 'Profile successfully updated.', flash[:success]
   end
 
+  test 'user should only be able to view profile they have access to' do
+    sign_in @pete
+    get :show, id: @brett
+    assert_response 401
+  end
+
   test 'user should only be able to edit their own profile' do
     sign_in @pete
     get :edit, id: @brett
-    assert_redirected_to root_path
-    assert_equal "You do not have access to that.", flash[:alert]
+    assert_response 401
   end
 
   test 'user should only be able to update their own profile' do
     sign_in @pete
     patch :update, id: @brett.id, user: { bio: 'Probably not a cat.' }
-    assert_redirected_to root_path
-    assert_equal "You do not have access to that.", flash[:alert]
+    assert_response 401
   end
 end
