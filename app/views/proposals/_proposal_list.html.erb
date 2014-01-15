@@ -1,6 +1,6 @@
 <li class="proposal">
   <h2 class="title"><%= link_to proposal.title, proposal %></h2>
-  <div class="abstract"><%= proposal.abstract %></div>
+  <div class="abstract"><%= simple_format proposal.abstract %></div>
   <ul class="button-group">
     <li><%= link_to "View", proposal, class: "button tiny" %></li>
     <li><%= link_to "Edit", edit_proposal_path(proposal), class: "button tiny secondary" %></li>

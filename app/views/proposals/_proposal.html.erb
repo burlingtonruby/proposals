@@ -2,15 +2,15 @@
   <h2 class="title"><%= proposal.title %></h2>
   <div class="abstract">
     <h3>Abstract</h3>
-    <p><%= proposal.abstract %></p>
+    <p><%= simple_format proposal.abstract %></p>
   </div>
   <div class="pitch">
     <h3>Pitch</h3>
-    <p><%= proposal.pitch %></p>
+    <p><%= simple_format proposal.pitch %></p>
   </div>
   <div class="notes">
     <h3>Notes</h3>
-    <p><%= proposal.notes %></p>
+    <p><%= simple_format proposal.notes %></p>
   </div>
 
   <ul class="button-group">
