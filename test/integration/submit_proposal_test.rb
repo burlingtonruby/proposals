@@ -5,6 +5,7 @@ class SubmitProposalTest < ActionDispatch::IntegrationTest
     @user = users(:pete)
     OmniAuth.config.add_mock(:github, uid: @user.uid, info: {name: @user.name})
   end
+
   test 'Existing user creates a proposal' do
     visit root_path
     click_link 'Sign In w/ GitHub'
