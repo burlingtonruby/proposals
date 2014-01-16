@@ -3,7 +3,7 @@ require 'test_helper'
 class SubmitProposalTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:pete)
-    OmniAuth.config.add_mock(:github, uid: @user.uid, info: {name: @user.name})
+    login_user @user
   end
 
   test 'Existing user creates a proposal' do

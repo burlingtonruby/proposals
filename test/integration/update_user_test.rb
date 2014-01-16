@@ -1,11 +1,9 @@
 require 'test_helper'
 
 class UpdateUserTest < ActionDispatch::IntegrationTest
-  include UserHelper
-
   setup do
     @user = users(:pete)
-    OmniAuth.config.add_mock(:github, uid: @user.uid, info: {name: @user.name})
+    login_user @user
   end
 
   test 'User edits their profile' do
@@ -24,9 +22,10 @@ class UpdateUserTest < ActionDispatch::IntegrationTest
 
     assert_match 'Profile successfully updated.', page.body
 
+    @user.reload
     assert_equal 'Smiles the Cat', @user.name
     assert_equal 'Portia sux', @user.bio
-    assert_equal 'http://smilesthecat', @user.website
+    assert_equal 'http://smilesthecat.com', @user.website
     assert_equal 'smilesthecat', @user.twitter
     assert_equal 'smilesthecat', @user.github
   end
