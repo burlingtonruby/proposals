@@ -6,9 +6,9 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = current_user.proposals.build(proposal_params)
+    @proposal = current_user.proposals.new
 
-    if @proposal.save
+    if @proposal.update(proposal_params)
       redirect_to @proposal
       flash[:success] = "Proposal successfully created. You will hear from us when the CFP closes. Thanks!"
     else
@@ -17,7 +17,7 @@ class ProposalsController < ApplicationController
   end
 
   def new
-    @proposal = Proposal.new
+    @proposal = current_user.proposals.new
   end
 
   def show
@@ -53,6 +53,7 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :abstract, :notes, :pitch, :user_id)
+    params.require(:proposal).permit(:title, :abstract, :notes, :pitch,
+      user_attributes: [:name, :website, :bio, :twitter, :github])
   end
 end
