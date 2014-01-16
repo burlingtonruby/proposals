@@ -31,7 +31,7 @@ class ProposalsControllerTest < ActionController::TestCase
     sign_in @brett
 
     assert_difference('Proposal.count') do
-      post :create, proposal: { title: 'Great Talk', user_id: @brett.id }
+      post :create, proposal: { title: 'Great Talk', abstract: 'Best talk' }
     end
 
     assert_redirected_to proposal_path(assigns(:proposal))
