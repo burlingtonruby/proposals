@@ -1,9 +1,8 @@
 <%= form_for @proposal do |f| %>
   <div class="row">
-    <div class="small-6 columns">
-      <%= f.fields_for :user, @proposal.user do |user| %>
-        <%= render partial: 'users/fields', locals: {f: user} %>
-      <% end %>
+    <div class="small-12 medium-6 columns">
+      <h3>About the Talk</h3>
+
       <%= f.label :title %>
       <%= f.text_field :title, placeholder: 'Make it great' %>
 
@@ -15,8 +14,22 @@
 
       <%= f.label :pitch %>
       <%= f.text_area :pitch, placeholder: 'Why should we pick you?' %>
+    </div>
+  </div>
 
-      <%= f.submit button_text, class: 'button' %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <hr />
+      <h3>About You</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+
+      <%= f.fields_for :user, @proposal.user do |user| %>
+        <%= render partial: 'users/fields', locals: {f: user} %>
+      <% end %>
     </div>
 
     <div class="small-12 medium-6 columns">
@@ -24,6 +37,11 @@
         <h5>Your Current Photo</h5>
         <%= image_tag @proposal.user.photo.url(:medium) %>
       <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.submit button_text, class: 'button' %>
     </div>
   </div>
 <% end %>
