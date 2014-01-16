@@ -27,4 +27,13 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+
+  def login_user(user)
+    OmniAuth.config.add_mock(:github, uid: user.uid, info: {name: user.name})
+  end
 end
