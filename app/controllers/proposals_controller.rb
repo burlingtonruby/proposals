@@ -7,10 +7,11 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = current_user.proposals.new
+    @proposal.attributes = proposal_params
 
-    if @proposal.update(proposal_params)
+    if @proposal.save_and_send_confirmation
       redirect_to @proposal
-      flash[:success] = "Proposal successfully created. You will hear from us when the CFP closes. Thanks!"
+      flash[:success] = "Proposal successfully created. You will receive an email confirmation shortly. Thanks!"
     else
       render 'new'
     end
@@ -54,6 +55,6 @@ class ProposalsController < ApplicationController
 
   def proposal_params
     params.require(:proposal).permit(:title, :abstract, :notes, :pitch,
-      user_attributes: [:name, :website, :bio, :twitter, :github])
+      user_attributes: [:name, :email, :website, :bio, :twitter, :github])
   end
 end
