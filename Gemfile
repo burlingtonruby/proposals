@@ -35,6 +35,7 @@ gem 'paperclip', '~> 3.5.2'
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor'
+  gem 'aws-sdk', '~> 1.32'
 end
 
 group :doc do
