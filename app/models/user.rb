@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true, on: :update
+  validates :bio, presence: true, on: :update
 
   Paperclip.interpolates :secret_key do |attachment, style|
     Digest::MD5.hexdigest(attachment.instance.photo_file_name)
