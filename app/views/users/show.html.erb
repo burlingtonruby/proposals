@@ -6,12 +6,22 @@
       <%= image_tag @user.photo.url(:medium) %>
     <% end %>
 
-    <p><%= @user.bio %></p>
+    <% if @user.bio.present? %>
+      <p><%= @user.bio %></p>
+    <% end %>
 
     <ul>
-      <li>Website: <%= link_to @user.website, @user.website %></li>
-      <li>Twitter: <%= link_to @user.twitter, "https://twitter.com/#{@user.twitter}" %></li>
-      <li>GitHub: <%= link_to @user.github, "https://github.com/#{@user.github}" %></li>
+      <% if @user.website.present? %>
+        <li>Website: <%= link_to @user.website, @user.website %></li>
+      <% end %>
+
+      <% if @user.twitter.present? %>
+        <li>Twitter: <%= link_to @user.twitter, "https://twitter.com/#{@user.twitter}" %></li>
+      <% end %>
+
+      <% if @user.github.present? %>
+        <li>GitHub: <%= link_to @user.github, "https://github.com/#{@user.github}" %></li>
+      <% end %>
     </ul>
 
     <%= link_to "Edit Profile", edit_user_path(@user), class: "button small" %>
