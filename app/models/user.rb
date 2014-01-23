@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :proposals
 
+  validates :name, presence: true
+  validates :email, presence: true, on: :update
+
   has_attached_file :photo, styles: { large: '600x600', medium: '300x300', small: '100x100' }
   validates_attachment :photo,
       content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },

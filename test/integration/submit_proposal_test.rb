@@ -15,6 +15,7 @@ class SubmitProposalTest < ActionDispatch::IntegrationTest
     end
 
     fill_in 'Name', with: 'Sebastian'
+    fill_in 'Email', with: 'sebastian@email.com'
     fill_in 'Bio', with: 'My Bio'
     fill_in 'Your Website', with: 'www.cats.com'
     fill_in 'Your GitHub Username', with: 'catluvr4a'
@@ -29,6 +30,7 @@ class SubmitProposalTest < ActionDispatch::IntegrationTest
 
     @user.reload
     assert_equal 'Sebastian', @user.name
+    assert_equal 'sebastian@email.com', @user.email
     assert_equal 'My Bio', @user.bio
     assert_equal 'www.cats.com', @user.website
     assert_equal 'catluvr4', @user.twitter

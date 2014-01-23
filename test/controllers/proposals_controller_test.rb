@@ -28,6 +28,8 @@ class ProposalsControllerTest < ActionController::TestCase
   end
 
   test 'should create proposal if signed in' do
+    ActionMailer::Base.deliveries.clear
+
     sign_in @brett
 
     assert_difference('Proposal.count') do
@@ -35,7 +37,8 @@ class ProposalsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to proposal_path(assigns(:proposal))
-    assert_equal 'Proposal successfully created. You will hear from us when the CFP closes. Thanks!', flash[:success]
+    assert_equal 'Proposal successfully created. You will receive an email confirmation shortly. Thanks!', flash[:success]
+    assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
   test 'new should render correct layout' do
