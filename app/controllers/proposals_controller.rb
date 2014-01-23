@@ -55,6 +55,6 @@ class ProposalsController < ApplicationController
 
   def proposal_params
     params.require(:proposal).permit(:title, :abstract, :notes, :pitch,
-      user_attributes: [:name, :email, :website, :bio, :twitter, :github])
+      user_attributes: [:name, :email, :photo, :website, :bio, :twitter, :github])
   end
 end
