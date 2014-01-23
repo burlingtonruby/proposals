@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true, on: :update
+  validates :bio, presence: true, on: :update
 
   has_attached_file :photo, styles: { large: '600x600', medium: '300x300', small: '100x100' }
   validates_attachment :photo,
