@@ -1,19 +1,12 @@
-<%= form_for @proposal do |f| %>
+<%= simple_form_for @proposal do |f| %>
   <div class="row">
     <div class="small-12 medium-6 columns">
       <h3>About the Talk</h3>
 
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: 'Make it great' %>
-
-      <%= f.label :abstract %>
-      <%= f.text_area :abstract, placeholder: 'What is your talk about?' %>
-
-      <%= f.label :notes %>
-      <%= f.text_area :notes, placeholder: 'What should we know about your talk that is not in the abstract?' %>
-
-      <%= f.label :pitch %>
-      <%= f.text_area :pitch, placeholder: 'Why should we pick you?' %>
+      <%= f.input :title, placeholder: 'Make it great' %>
+      <%= f.input :abstract, placeholder: 'What is your talk about?' %>
+      <%= f.input :notes, placeholder: 'What should we know about your talk that is not in the abstract?' %>
+      <%= f.input :pitch, placeholder: 'Why should we pick you?' %>
     </div>
   </div>
 
@@ -27,7 +20,7 @@
   <div class="row">
     <div class="small-12 medium-6 columns">
 
-      <%= f.fields_for :user, @proposal.user do |user| %>
+      <%= f.simple_fields_for :user, @proposal.user do |user| %>
         <%= render partial: 'users/fields', locals: {f: user} %>
       <% end %>
     </div>
@@ -41,7 +34,7 @@
   </div>
   <div class="row">
     <div class="small-12 medium-6 columns">
-      <%= f.submit button_text, class: 'button' %>
+      <%= f.button :submit, button_text, class: 'button' %>
     </div>
   </div>
 <% end %>

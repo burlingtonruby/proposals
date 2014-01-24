@@ -5,10 +5,10 @@
 </div>
 
 <div class="row">
-  <%= form_for @user do |f| %>
+  <%= simple_form_for @user do |f| %>
     <div class="small-12 medium-6 columns">
       <%= render partial: 'fields', locals: {f: f} %>
-      <%= f.submit "Update Profile", class: 'button' %>
+      <%= f.button :submit, "Update Profile", class: 'button' %>
     </div>
   <% end %>
 
