@@ -2,6 +2,6 @@
 <%= f.input :email %>
 <%= f.input :photo, label: "Photo of You (this will be used on the website)" %>
 <%= f.input :bio, placeholder: 'This will go on the conference website. Be sure to check for typos.' %>
-<%= f.input :website, label: "Your Website" %>
+<%= f.input :website, as: :url, label: "Your Website" %>
 <%= f.input :github, label: "Your GitHub Username" %>
 <%= f.input :twitter, label: "Your Twitter Handle" %>
