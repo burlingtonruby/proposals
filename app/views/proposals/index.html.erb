@@ -1,11 +1,19 @@
 <div class="row">
   <div class="proposals small-12 columns">
     <h1>Your Proposals</h1>
+    <h4>CFP Closes on <%= ApplicationHelper::CutoffDate %></h4>
+
+    <% if @proposals.blank? %>
+      <p>Here is where you will see your proposals. You have not made one yet
+        though, bummer! Submit one by clicking the big ole button below. Even if
+        you are still drafting out your proposal, just go for it. You can edit
+        it at any time.</p>
+    <% end %>
 
     <ul class="small-block-grid-1 medium-block-grid-2">
       <%= render partial: 'proposal_list', collection: @proposals, as: :proposal %>
     </ul>
 
-    <%= link_to "Submit Proposal", new_proposal_path, class: "button small" %>
+    <%= link_to "Submit a Proposal", new_proposal_path, class: "button" %>
   </div>
 </div>
