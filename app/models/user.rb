@@ -11,9 +11,15 @@ class User < ActiveRecord::Base
     Digest::MD5.hexdigest(attachment.instance.photo_file_name)
   end
 
-  has_attached_file :photo,
-      styles: { large: '600x600', medium: '300x300', small: '100x100' },
-      path: "photos/:id/:style/:secret_key.:extension"
+  if Rails.env.production?
+    has_attached_file :photo,
+        styles: { large: '600x600', medium: '300x300', small: '100x100' },
+        path: "photos/:id/:style/:secret_key.:extension"
+  else
+    has_attached_file :photo,
+        styles: { large: '600x600', medium: '300x300', small: '100x100' }
+  end
+
 
   validates_attachment :photo,
       content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
