@@ -1,4 +1,10 @@
+@import 'foundation/components/global';
+
 textarea {
   resize: vertical;
   height: 16em;
+}
+
+[title=required] {
+  color: $alert-color;
 }
