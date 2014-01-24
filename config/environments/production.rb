@@ -75,7 +75,7 @@ Proposals::Application.configure do
     domain: 'cfp.burlingtonrubyconference.com' # your domain to identify your server when connecting
   }
 
-  config.action_mailer.default_url_options = {host: 'cfp.burlingtonrubyconference.com' }
+  config.action_mailer.default_url_options = { host: 'cfp.burlingtonrubyconference.com' }
 
   config.paperclip_defaults = {
     storage: :s3,
