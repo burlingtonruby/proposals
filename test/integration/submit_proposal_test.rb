@@ -11,7 +11,7 @@ class SubmitProposalTest < ActionDispatch::IntegrationTest
     click_link 'Sign In w/ GitHub'
 
     within '.proposals' do
-      click_link 'Submit Proposal'
+      click_link 'Submit a Proposal'
     end
 
     fill_in 'Name', with: 'Sebastian'
