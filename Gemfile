@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 1.2'
 
 # Use Foundation for the front-end
 gem 'foundation-rails', '~> 5.0.2.0'
+gem 'foundation-icons-sass-rails', '~> 3.0.0'
 
 # omniauth strategies
 gem 'omniauth-github', '~> 1.1'
