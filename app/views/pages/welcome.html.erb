@@ -28,7 +28,12 @@
       appreciate it. If you have any questions, do not hesitate to reach out to
       us <a href="mailto:info@burlingtonrubyconference.com">by email</a> or <a
         href="https://twitter.com/btvrubyconf">on Twitter</a>.</p>
-    <%= link_to 'Sign Up w/ GitHub to Submit a
-      Proposal', '/auth/github', class: 'button primary' %>
+
+    <% if current_user %>
+      <%= link_to "Submit a Proposal", new_proposal_path, class: "button" %>
+    <% else %>
+      <%= link_to 'Sign Up w/ GitHub to Submit a
+        Proposal', '/auth/github', class: 'button primary' %>
+    <% end %>
   </div>
 </div>
