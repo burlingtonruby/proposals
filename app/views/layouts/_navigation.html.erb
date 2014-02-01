@@ -8,6 +8,9 @@
   <section class="top-bar-section">
    <ul class="right">
      <% if current_user %>
+       <% if current_user.admin? %>
+         <li data-no-turbolink><%= link_to "<i class='fi-lock'></i> Admin".html_safe, admin_root_url %></li>
+       <% end %>
        <li><%= link_to "Submit Proposal", new_proposal_path %></li>
        <li><%= link_to "Your Proposals", proposals_path %></li>
        <li><%= link_to "Your Profile", current_user %></li>

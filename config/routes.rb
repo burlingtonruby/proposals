@@ -1,4 +1,9 @@
 Proposals::Application.routes.draw do
+  devise_config = ActiveAdmin::Devise.config
+  devise_config[:controllers][:sessions] = 'sessions'
+  devise_for :users, devise_config
+  ActiveAdmin.routes(self)
+
   resources :proposals
   resources :users
 

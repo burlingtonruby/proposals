@@ -1,6 +1,8 @@
 require 'digest/md5'
 
 class User < ActiveRecord::Base
+  devise
+
   has_many :proposals
 
   validates :name, presence: true
@@ -20,7 +22,6 @@ class User < ActiveRecord::Base
         styles: { large: '600x600', medium: '300x300', small: '100x100' }
   end
 
-
   validates_attachment :photo,
       content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
       size: { in: 0..10.megabytes }
@@ -31,6 +32,11 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.name = auth["info"]["name"]
     end
+  end
+
+  # Used by ActiveAdmin/Devise to allow Oauth login only
+  def password_required?
+    false
   end
 
   def to_s

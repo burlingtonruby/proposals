@@ -38,6 +38,9 @@ gem "simple_form", "~> 3.0"
 
 gem 'newrelic_rpm'
 
+# ActiveAdmin for managing proposals
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor'
