@@ -36,6 +36,8 @@ gem 'paperclip', '~> 3.5.2'
 # Simple form builder
 gem "simple_form", "~> 3.0"
 
+gem 'newrelic_rpm'
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor'
