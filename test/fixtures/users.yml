@@ -7,6 +7,9 @@ brett:
   website: http://brettchalupa.com
   twitter: brettchalupa
   github: brettchalupa
+  photo_file_name: brett.jpg
+  photo_content_type: image/jpeg
+  photo_file_size: 836486
 
 pete:
   provider: github
@@ -17,3 +20,6 @@ pete:
   website: http://beerlington.com
   twitter: beerlington
   github: beerlington
+  photo_file_name: pete.jpg
+  photo_content_type: image/jpeg
+  photo_file_size: 836486
