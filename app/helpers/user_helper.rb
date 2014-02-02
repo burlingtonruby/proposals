@@ -20,4 +20,12 @@ module UserHelper
       render file: 'public/401.html', status: :unauthorized
     end
   end
+
+  def require_admin!
+    if current_user.blank?
+      require_authentication!
+    elsif !current_user.admin?
+      render file: 'public/401.html', status: :unauthorized
+    end
+  end
 end
