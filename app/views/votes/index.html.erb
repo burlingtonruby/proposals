@@ -1,0 +1,19 @@
+<div class="row voting">
+  <div class="proposals small-12 columns">
+    <h1>Voting for Round <%= current_round %></h1>
+
+    <%= form_tag bulk_create_votes_path do %>
+      <div class="small-block-grid-1 medium-block-grid-2">
+        <% @proposals.each do |proposal| %>
+          <div class="proposal">
+            <%= check_box_tag 'votes[]', proposal.id, @current_votes.include?(proposal), id: "proposal_#{proposal.id}" %>
+            <%= label_tag "proposal_#{proposal.id}", proposal.title %>
+            <p><%= proposal.abstract %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <%= submit_tag "Submit Votes", class: "button" %>
+    <% end %>
+  </div>
+</div>

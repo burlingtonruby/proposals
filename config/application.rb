@@ -22,5 +22,6 @@ module Proposals
     config.i18n.enforce_available_locales = false
 
     config.cutoff_date = "March 17th, 2014".to_date
+    config.current_round = 1
   end
 end

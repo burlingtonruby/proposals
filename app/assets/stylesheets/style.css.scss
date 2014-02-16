@@ -9,3 +9,12 @@ textarea {
 [title=required] {
   color: $alert-color;
 }
+
+.voting .proposal label {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.voting .proposal :checked + label {
+   color: $success-color;
+}

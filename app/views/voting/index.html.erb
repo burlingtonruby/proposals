@@ -1,0 +1,22 @@
+<div class="row voting">
+  <div class="small-12 medium-6 columns">
+    <h2>Round 1</h2>
+    <p>Voting is now open for Round 1. <%= link_to "Cast your vote.", votes_path %></p>
+    <h3>Your votes for Round 1</h3>
+    <ol>
+      <% @round1.each do |proposal| %>
+        <li><%= proposal.title %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="small-12 medium-6 columns">
+    <h2>Round 2</h2>
+    <p>Voting for Round 2 is not yet open.</p>
+    <ol>
+      <% @round2.each do |proposal| %>
+        <li><%= proposal.title %></li>
+      <% end %>
+    </ol>
+  </div>
+</div>

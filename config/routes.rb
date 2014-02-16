@@ -6,6 +6,10 @@ Proposals::Application.routes.draw do
 
   resources :proposals
   resources :users
+  get 'voting' => 'voting#index'
+  resources :votes do
+    post 'bulk_create' => 'votes#bulk_create', on: :collection
+  end
 
   match '/auth/:provider/callback' => 'sessions#create', via: %i(get post)
   match '/auth/failure' => 'sessions#failure', via: %i(get post)
