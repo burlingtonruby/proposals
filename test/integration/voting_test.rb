@@ -31,6 +31,7 @@ class VotingTest < ActionDispatch::IntegrationTest
     visit root_path
     click_link 'Sign In w/ GitHub'
     click_link 'Voting'
+    click_link 'Cast your vote'
 
     # select first 15 proposals
     Proposal.offset(3).limit(15).each do |proposal|
@@ -39,6 +40,6 @@ class VotingTest < ActionDispatch::IntegrationTest
 
     click_button 'Submit Votes'
 
-    assert_equal 15, @user.votes.where(round: 1).count
+    assert_equal 15, @user.votes.where(round: :one).count
   end
 end

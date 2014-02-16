@@ -6,9 +6,13 @@ Proposals::Application.routes.draw do
 
   resources :proposals
   resources :users
-  get 'voting' => 'voting#index'
-  resources :votes do
-    post 'bulk_create' => 'votes#bulk_create', on: :collection
+
+  scope :voting do
+    get '/' => 'voting#index', as: :voting
+
+    resources :votes, path: '/:round/votes', only: [:index] do
+      post 'bulk_create' => 'votes#bulk_create', on: :collection
+    end
   end
 
   match '/auth/:provider/callback' => 'sessions#create', via: %i(get post)

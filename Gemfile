@@ -38,6 +38,9 @@ gem 'newrelic_rpm'
 # ActiveAdmin for managing proposals
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+# Enums
+gem "classy_enum", "~> 3.4.0"
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor'

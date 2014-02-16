@@ -10,11 +10,15 @@ textarea {
   color: $alert-color;
 }
 
-.voting .proposal label {
-  font-size: 22px;
-  font-weight: bold;
-}
+.voting {
+  .proposal {
+    label {
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-.voting .proposal :checked + label {
-   color: $success-color;
+    :checked + label {
+      color: $success-color;
+    }
+  }
 }

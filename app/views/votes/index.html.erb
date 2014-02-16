@@ -1,6 +1,6 @@
 <div class="row voting">
   <div class="proposals small-12 columns">
-    <h1>Voting for Round <%= current_round %></h1>
+    <h1>Voting for <%= current_round.text %></h1>
 
     <%= form_tag bulk_create_votes_path do %>
       <div class="small-block-grid-1 medium-block-grid-2">

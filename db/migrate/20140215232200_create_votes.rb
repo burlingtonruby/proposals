@@ -3,7 +3,7 @@ class CreateVotes < ActiveRecord::Migration
     create_table :votes do |t|
       t.references :user, index: true
       t.references :proposal, index: true
-      t.integer :round, index: true
+      t.string :round, index: true
 
       t.timestamps
     end
