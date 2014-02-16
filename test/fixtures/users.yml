@@ -22,4 +22,18 @@ pete:
   github: beerlington
   photo_file_name: pete.jpg
   photo_content_type: image/jpeg
+
+voter:
+  voter: true
+  provider: github
+  uid: 3
+  name: Votey Voter
+  email: voter@rockthevote.com
+  bio: Voter loves voting
+  website: http://voter.com
+  twitter: voter
+  github: voter
+  photo_file_name: voter.jpg
+  photo_content_type: image/jpeg
+  photo_file_size: 836486
   photo_file_size: 836486
