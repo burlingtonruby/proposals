@@ -10,6 +10,11 @@ class Round::One < Round
   def total_votes
     15
   end
+
+  # Will names and other identifying info be hidden from voters?
+  def anonymous?
+    true
+  end
 end
 
 class Round::Two < Round
@@ -20,5 +25,10 @@ class Round::Two < Round
   # Number of votes a voter gets to cast in this round
   def total_votes
     5
+  end
+
+  # Will names and other identifying info be hidden from voters?
+  def anonymous?
+    false
   end
 end

@@ -2,7 +2,11 @@ class VotingController < ApplicationController
   before_filter :require_voter!
 
   def index
-    @round1 = current_user.votes.for_round(:one)
-    @round2 = current_user.votes.for_round(:two)
+    @rounds = Round.map { |round|
+      {
+        round: round,
+        current_votes: current_user.votes.for_round(round)
+      }
+    }
   end
 end

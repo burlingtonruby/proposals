@@ -1,0 +1,48 @@
+<div class="proposal">
+  <%= check_box_tag 'votes[]', proposal.id, @current_votes.include?(proposal), id: "proposal_#{proposal.id}" %>
+  <%= label_tag "proposal_#{proposal.id}", proposal.title %>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#abstract-<%= proposal.id %>">Abstract</a></dd>
+    <dd><a href="#notes-<%= proposal.id %>">Notes</a></dd>
+    <dd><a href="#pitch-<%= proposal.id %>">Pitch</a></dd>
+    <dd><a href="#user-<%= proposal.id %>">Submitter</a></dd>
+  </dl>
+
+  <div class="tabs-content">
+    <div class="content active" id="abstract-<%= proposal.id %>">
+      <%= render_markdown(proposal.abstract) %>
+    </div>
+    <div class="content" id="notes-<%= proposal.id %>">
+      <%= render_markdown(proposal.notes) %>
+    </div>
+
+    <div class="content" id="pitch-<%= proposal.id %>">
+      <% if current_round.anonymous? %>
+        <p>Sumitter pitch is not available during an anonymous voting round.</p>
+      <% else %>
+        <%= render_markdown(proposal.pitch) %>
+      <% end %>
+    </div>
+
+    <div class="content user-info" id="user-<%= proposal.id %>">
+      <% if current_round.anonymous? %>
+        <p>Sumitter info is not available during an anonymous voting round.</p>
+      <% else %>
+        <dl>
+          <dt>Name</dt>
+          <dd><%= proposal.user_name %></dd>
+          <% if proposal.user.twitter? %>
+            <dt>Twitter</dt>
+            <dd><%= proposal.user.twitter %></dd>
+          <% end %>
+          <% if proposal.user.github? %>
+            <dt>GitHub</dt>
+            <dd><%= proposal.user.github %></dd>
+          <% end %>
+        </dl>
+      <% end %>
+    </div>
+
+  </div>
+</div>

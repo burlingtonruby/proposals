@@ -1,4 +1,5 @@
 <div class="row voting">
-  <%= render partial: 'votes', locals: {votes: @round1, round: Round::One.new } %>
-  <%= render partial: 'votes', locals: {votes: @round2, round: Round::Two.new } %>
+  <% @rounds.each do |round| %>
+    <%= render partial: 'votes', locals: {votes: round[:current_votes], round: round[:round]} %>
+  <% end %>
 </div>

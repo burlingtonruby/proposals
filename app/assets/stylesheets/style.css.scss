@@ -10,10 +10,29 @@ textarea {
   color: $alert-color;
 }
 
+.tabs dd a {
+  font-weight: bold;
+}
+
+.tabs-content {
+  margin-bottom: 0;
+}
+
+.user-info dl {
+  overflow: hidden;
+  dt, dd {
+    float: left;
+  }
+  dt {
+    clear: left;
+    width: 75px;
+  }
+}
+
 .voting {
   .proposal {
     label {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
     }
 
