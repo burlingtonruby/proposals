@@ -15,6 +15,11 @@ class Round::One < Round
   def anonymous?
     true
   end
+
+  # Proposals displayed during voting
+  def proposals
+    Proposal.order(:title)
+  end
 end
 
 class Round::Two < Round
@@ -30,5 +35,10 @@ class Round::Two < Round
   # Will names and other identifying info be hidden from voters?
   def anonymous?
     false
+  end
+
+  # Proposals displayed during voting
+  def proposals
+    Proposal.where(round2: true).order(:title)
   end
 end

@@ -6,7 +6,7 @@ class VotesController < ApplicationController
     @current_votes = current_user.votes.where(round: current_round).
       includes(:proposal).map(&:proposal)
 
-    @proposals = Proposal.order(:title)
+    @proposals = current_round.proposals
   end
 
   def bulk_create
@@ -21,7 +21,7 @@ class VotesController < ApplicationController
       redirect_to voting_url, notice: "Your votes have been recorded"
     else
       @current_votes = Proposal.find(proposal_ids)
-      @proposals = Proposal.order(:title)
+      @proposals = current_round.proposals
       flash.now[:alert] = "Too many votes were cast"
       render :index
     end
