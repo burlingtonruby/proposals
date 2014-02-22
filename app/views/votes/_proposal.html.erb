@@ -19,7 +19,7 @@
 
     <div class="content" id="pitch-<%= proposal.id %>">
       <% if current_round.anonymous? %>
-        <p>Sumitter pitch is not available during an anonymous voting round.</p>
+        <p>Pitch is not available during an anonymous voting round.</p>
       <% else %>
         <%= render_markdown(proposal.pitch) %>
       <% end %>
@@ -27,7 +27,7 @@
 
     <div class="content user-info" id="user-<%= proposal.id %>">
       <% if current_round.anonymous? %>
-        <p>Sumitter info is not available during an anonymous voting round.</p>
+        <p>Submitter info is not available during an anonymous voting round.</p>
       <% else %>
         <dl>
           <dt>Name</dt>
