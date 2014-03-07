@@ -40,4 +40,13 @@ textarea {
       color: $success-color;
     }
   }
+  .tabs .active {
+    border: 1px solid #ccc;
+    border-bottom: none;
+  }
+  .tabs-content {
+    border: 1px solid #ccc;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
 }

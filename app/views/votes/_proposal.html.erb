@@ -1,6 +1,6 @@
 <div class="proposal">
   <%= check_box_tag 'votes[]', proposal.id, @current_votes.include?(proposal), id: "proposal_#{proposal.id}" %>
-  <%= label_tag "proposal_#{proposal.id}", proposal.title %>
+  <%= label_tag "proposal_#{proposal.id}", "##{proposal.id}. #{proposal.title}" %>
 
   <dl class="tabs" data-tab>
     <dd class="active"><a href="#abstract-<%= proposal.id %>">Abstract</a></dd>
