@@ -1,26 +1,24 @@
 <div class="row voting">
-  {{#each rounds}}
-    <div class="small-12 medium-6 columns">
-      <h2>{{text}}</h2>
+  {{#with view as VotingView}}
+    {{#each round in VotingView.controller.rounds}}
+      <div class="small-12 medium-6 columns">
+        <h2>{{round.text}}</h2>
 
-      {{#if isCurrentRound}}
-        <p>Voting is now open for {{text}}. {{link-to "Cast your vote." "voting_round" id}}</p>
-      {{else}}
-        <p>Voting is closed for {{text}}.</p>
-      {{/if}}
+        {{#if round.isCurrentRound}}
+          <p>Voting is now open for {{round.text}}. {{link-to "Cast your vote." "voting_round" round.id}}</p>
+        {{else}}
+          <p>Voting is closed for {{round.text}}.</p>
+        {{/if}}
 
-      <h3>Your votes for {{text}}</h3>
-      <ol>
-        {{!
-        <% round.total_votes.times do |int| %>
-          <li>
-            <% if votes[int] %>
-              <%= votes[int].title %>
-            <% end %>
-          </li>
-        <% end %>
-        }}
-      </ol>
-    </div>
-  {{/each}}
+        <h3>Your votes for {{round.text}}</h3>
+        <ol>
+          {{#view Proposals.CurrentVotesView controller=VotingView.controller round=round}}
+            {{#each view.currentVotes}}
+              <li>{{proposal.title}}</li>
+            {{/each}}
+          {{/view}}
+        </ol>
+      </div>
+    {{/each}}
+  {{/with}}
 </div>

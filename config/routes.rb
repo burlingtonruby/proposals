@@ -11,6 +11,7 @@ Proposals::Application.routes.draw do
     get '/rounds' => 'rounds#index'
     get '/rounds/:id' => 'rounds#show'
     get '/proposals' => 'proposals#index'
+    get '/votes' => 'votes#index'
     post '/votes' => 'votes#create'
     delete '/votes/:id' => 'votes#destroy'
   end

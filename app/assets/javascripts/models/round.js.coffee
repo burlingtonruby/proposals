@@ -3,3 +3,4 @@ Proposals.Round = DS.Model.extend
   totalVotes: DS.attr('number')
   isAnonymous: DS.attr('boolean')
   isCurrentRound: DS.attr('boolean')
+  name: DS.attr('string')
