@@ -7,7 +7,9 @@ class ProposalSerializer < ActiveModel::Serializer
   has_one :vote
 
   def vote
-    VoteSerializer.new(current_user.votes.find_by(round: options[:current_round], proposal: object))
+    vote = current_user.votes.find_by(round: options[:current_round], proposal: object)
+    return if vote.nil?
+    VoteSerializer.new(vote)
   end
 
   def selected
