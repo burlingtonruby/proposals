@@ -4,4 +4,4 @@ Proposals.VotingRoundRoute = Ember.Route.extend
 
   setupController: (controller, model) ->
     controller.set('model', model)
-    controller.set('proposals', @store.find('proposal'))
+    controller.set('proposals', @store.find('proposal', {round: model.name}))
