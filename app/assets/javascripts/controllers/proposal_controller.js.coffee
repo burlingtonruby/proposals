@@ -5,8 +5,16 @@ Proposals.ProposalController = Ember.ObjectController.extend
   submitterActive: false
 
   actions:
-    vote: ->
-      @toggleProperty('selected')
+    toggleVote: ->
+      if @get('selected')
+        vote = @get('vote')
+        vote.deleteRecord()
+      else
+        vote = @store.createRecord('vote', {proposalId: @get('id')})
+
+      vote.save().then =>
+        @toggleProperty('selected')
+
       false
     showAbstract: ->
       @send('toggleOff')

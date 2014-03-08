@@ -1,9 +1,17 @@
 class ProposalSerializer < ActiveModel::Serializer
+  embed :ids, include: true
+
   attributes :id, :title, :abstract, :notes, :pitch, :user_name, :twitter,
     :github, :selected
 
+  has_one :vote
+
+  def vote
+    VoteSerializer.new(current_user.votes.find_by(round: options[:current_round], proposal: object))
+  end
+
   def selected
-    options[:current_votes].include? object
+    vote.present?
   end
 
   def pitch

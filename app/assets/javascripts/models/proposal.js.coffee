@@ -7,3 +7,4 @@ Proposals.Proposal = DS.Model.extend
   twitter: DS.attr('string')
   github: DS.attr('string')
   selected: DS.attr('boolean')
+  vote: DS.belongsTo('vote')
