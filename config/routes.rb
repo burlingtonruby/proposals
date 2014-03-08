@@ -7,12 +7,19 @@ Proposals::Application.routes.draw do
   resources :proposals
   resources :users
 
+  namespace :api do
+    get '/rounds' => 'rounds#index'
+    get '/rounds/:id' => 'rounds#show'
+    get '/proposals' => 'proposals#index'
+  end
+
   scope :voting do
     get '/' => 'voting#index', as: :voting
+    get '/*catchall' => 'voting#index'
 
-    resources :votes, path: '/:round/votes', only: [:index] do
-      post 'bulk_create' => 'votes#bulk_create', on: :collection
-    end
+    # resources :votes, path: '/:round/votes', only: [:index] do
+    #   post 'bulk_create' => 'votes#bulk_create', on: :collection
+    # end
   end
 
   match '/auth/:provider/callback' => 'sessions#create', via: %i(get post)

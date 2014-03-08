@@ -1,0 +1,26 @@
+<div class="row voting">
+  {{#each rounds}}
+    <div class="small-12 medium-6 columns">
+      <h2>{{text}}</h2>
+
+      {{#if isCurrentRound}}
+        <p>Voting is now open for {{text}}. {{link-to "Cast your vote." "voting_round" id}}</p>
+      {{else}}
+        <p>Voting is closed for {{text}}.</p>
+      {{/if}}
+
+      <h3>Your votes for {{text}}</h3>
+      <ol>
+        {{!
+        <% round.total_votes.times do |int| %>
+          <li>
+            <% if votes[int] %>
+              <%= votes[int].title %>
+            <% end %>
+          </li>
+        <% end %>
+        }}
+      </ol>
+    </div>
+  {{/each}}
+</div>

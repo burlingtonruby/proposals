@@ -1,4 +1,5 @@
 class Round < ClassyEnum::Base
+  include ActiveModel::Serialization
 end
 
 class Round::One < Round
