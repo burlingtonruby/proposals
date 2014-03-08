@@ -14,10 +14,14 @@ Proposals.ProposalController = Ember.ObjectController.extend
           proposal: @get('model')
         )
 
-      vote.save().then =>
+      vote.save().then(=>
         @toggleProperty('selected')
+      ).catch((error) ->
+        alert(error.responseText)
+      )
 
       false
+
     showAbstract: ->
       @send('toggleOff')
       @set('abstractActive', true)

@@ -3,9 +3,15 @@ module Api
     respond_to :json
 
     def create
-      proposal = Proposal.find(params[:vote].fetch(:proposal_id))
-      vote = current_user.votes.create(round: current_round, proposal: proposal)
-      render json: {vote: vote}
+      votes_in_current_round = current_user.votes.where(round: current_round)
+
+      if votes_in_current_round.count <= current_round.total_votes
+        proposal = Proposal.find(params[:vote].fetch(:proposal_id))
+        vote = votes_in_current_round.create(proposal: proposal)
+        render json: {vote: vote}
+      else
+        render json: "Too many votes were cast", status: :forbidden
+      end
     end
 
     def destroy

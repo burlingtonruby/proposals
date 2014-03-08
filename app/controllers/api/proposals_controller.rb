@@ -3,7 +3,7 @@ module Api
     respond_to :json
 
     def index
-      respond_with current_round.proposals.limit(2),
+      respond_with current_round.proposals,
         each_serializer: ProposalSerializer,
         current_round: current_round
     end
