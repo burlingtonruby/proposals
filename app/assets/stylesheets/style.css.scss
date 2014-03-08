@@ -1,5 +1,7 @@
 @import 'foundation/components/global';
 @import 'foundation-icons';
+@import "foundation/components/buttons";
+@import "foundation/components/grid";
 
 textarea {
   resize: vertical;
@@ -30,19 +32,30 @@ textarea {
 }
 
 .voting {
+  @include grid-row();
   .proposal {
-    label {
+    .title {
       font-size: 24px;
       font-weight: bold;
     }
-
-    :checked + label {
+    &.selected .title {
       color: $success-color;
     }
   }
-  .tabs .active {
-    border: 1px solid #ccc;
-    border-bottom: none;
+  .tabs {
+    .active {
+      border: 1px solid #ccc;
+      border-bottom: none;
+    }
+    .actions span {
+      @include button($padding: 0.3rem, $radius: 5px);
+      margin: 15px 0 0 15px;
+      display: block;
+      float: left;
+      &.selected {
+        @include button-style($bg: $success-color);
+      }
+    }
   }
   .tabs-content {
     border: 1px solid #ccc;

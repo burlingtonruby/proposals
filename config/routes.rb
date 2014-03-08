@@ -7,12 +7,19 @@ Proposals::Application.routes.draw do
   resources :proposals
   resources :users
 
+  namespace :api do
+    get '/rounds' => 'rounds#index'
+    get '/rounds/:id' => 'rounds#show'
+    get '/proposals' => 'proposals#index'
+    get '/votes' => 'votes#index'
+    post '/votes' => 'votes#create'
+    delete '/votes/:id' => 'votes#destroy'
+  end
+
+  # Ember app root
   scope :voting do
     get '/' => 'voting#index', as: :voting
-
-    resources :votes, path: '/:round/votes', only: [:index] do
-      post 'bulk_create' => 'votes#bulk_create', on: :collection
-    end
+    get '/*catchall' => 'voting#index'
   end
 
   match '/auth/:provider/callback' => 'sessions#create', via: %i(get post)
