@@ -41,9 +41,6 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 # Enums
 gem "classy_enum", "~> 3.4.0"
 
-# Markdown processor
-gem "redcarpet", "~> 3.1.0"
-
 # Ember dependencies
 gem "ember-rails", "~> 0.14.1"
 gem "ember-source", "~> 1.5.0.beta.3"
