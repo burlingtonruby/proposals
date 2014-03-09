@@ -1,6 +1,7 @@
 @import 'foundation/components/global';
 @import 'foundation-icons';
 @import "foundation/components/buttons";
+@import "foundation/components/grid";
 
 textarea {
   resize: vertical;
@@ -31,6 +32,7 @@ textarea {
 }
 
 .voting {
+  @include grid-row();
   .proposal {
     .title {
       font-size: 24px;
