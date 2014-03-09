@@ -29,14 +29,14 @@
           </dl>
 
           <div class="tabs-content">
-            <div {{bind-attr class=":content abstractActive:active"}}>
+            <div {{bind-attr class=":abstract :content abstractActive:active"}}>
               {{unbound format-markdown abstract}}
             </div>
-            <div {{bind-attr class=":content notesActive:active"}}>
+            <div {{bind-attr class=":notes :content notesActive:active"}}>
               {{unbound format-markdown notes}}
             </div>
 
-            <div {{bind-attr class=":content pitchActive:active"}}>
+            <div {{bind-attr class=":pitch :content pitchActive:active"}}>
               {{#if RoundView.controller.isAnonymous}}
                 <p>Pitch is not available during an anonymous voting round.</p>
               {{else}}

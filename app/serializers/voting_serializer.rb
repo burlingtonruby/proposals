@@ -3,7 +3,7 @@ class VotingSerializer < ActiveModel::Serializer
 
   embed :ids, include: true
   attributes :id, :round
-  has_one :proposal
+  has_one :proposal, serializer: ProposalListSerializer
 
   def round
     object.round.to_s
