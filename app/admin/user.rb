@@ -10,7 +10,7 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs :name, :email, :bio, :website, :twitter, :github
+    f.inputs :name, :email, :bio, :website, :twitter, :github, :voter
     f.actions
   end
 end
