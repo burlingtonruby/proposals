@@ -5,6 +5,8 @@
     {{#with view as RoundView}}
       {{#each visibleProposals}}
         {{render "proposal" this}}
+      {{else}}
+        Loading proposals...
       {{/each}}
     {{/with}}
   </div>
