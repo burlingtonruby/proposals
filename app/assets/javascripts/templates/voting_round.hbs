@@ -3,7 +3,7 @@
     <h1>Voting for {{text}}</h1>
 
     {{#with view as RoundView}}
-      {{#each proposals itemController='proposal'}}
+      {{#each visibleProposals itemController='proposal'}}
         <div {{bind-attr class=":proposal selected"}}>
           <h2 class="title">#{{unbound id}}. {{unbound title}}</h2>
 
@@ -13,7 +13,18 @@
             <dd {{bind-attr class="pitchActive:active"}}><a {{action showPitch}}>Pitch</a></dd>
             <dd {{bind-attr class="submitterActive:active"}}><a {{action showSubmitter}}>Submitter</a></dd>
             <dd class="actions">
-              <span {{bind-attr class=":vote selected"}} {{action toggleVote}}>Vote</span>
+              <span {{bind-attr class=":vote selected"}} {{action toggleVote}}>
+                {{#if selected}}
+                  <i class="fi-checkbox"></i> Selected
+                {{else}}
+                  <i class="fi-like"></i> Select
+                {{/if}}
+              </span>
+              {{#unless selected}}
+                <span class="vote" {{action hide}}>
+                  <i class="fi-dislike"></i> Hide
+                </span>
+              {{/unless}}
             </dd>
           </dl>
 

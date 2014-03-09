@@ -49,6 +49,7 @@ textarea {
       @include button($padding: 0.3rem, $radius: 5px);
       margin: 15px 0 0 15px;
       display: block;
+      float: left;
       &.selected {
         @include button-style($bg: $success-color);
       }

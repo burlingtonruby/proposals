@@ -22,6 +22,10 @@ Proposals.ProposalController = Ember.ObjectController.extend
 
       false
 
+    hide: ->
+      @set('model.visible', false)
+      false
+
     showAbstract: ->
       @send('toggleOff')
       @set('abstractActive', true)

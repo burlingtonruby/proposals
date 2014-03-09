@@ -8,3 +8,4 @@ Proposals.Proposal = DS.Model.extend
   github: DS.attr('string')
   selected: DS.attr('boolean')
   vote: DS.belongsTo('vote')
+  visible: DS.attr('boolean')

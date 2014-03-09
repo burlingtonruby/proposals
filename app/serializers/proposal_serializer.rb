@@ -2,7 +2,7 @@ class ProposalSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :title, :abstract, :notes, :pitch, :user_name, :twitter,
-    :github, :selected
+    :github, :selected, :visible
 
   has_one :vote
 
@@ -10,6 +10,10 @@ class ProposalSerializer < ActiveModel::Serializer
     vote = current_user.votes.find_by(round: options[:current_round], proposal: object)
     return if vote.nil?
     VoteSerializer.new(vote)
+  end
+
+  def visible
+    true
   end
 
   def selected
