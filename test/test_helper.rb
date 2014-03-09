@@ -3,6 +3,16 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/pride'
 require 'capybara/rails'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(
+    app,
+    phantomjs_logger: IO.sysopen(File::NULL)
+  )
+end
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
