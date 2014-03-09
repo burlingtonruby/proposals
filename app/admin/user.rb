@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :email, :bio, :website, :twitter, :github
+  permit_params :name, :email, :bio, :website, :twitter, :github, :voter
 
   index do
     column :name
