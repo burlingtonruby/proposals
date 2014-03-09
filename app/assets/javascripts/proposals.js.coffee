@@ -38,5 +38,6 @@ Ember.Application.initializer
 showdown = new Showdown.converter()
 
 Ember.Handlebars.helper('format-markdown', (input) ->
+  return unless input
   new Handlebars.SafeString(showdown.makeHtml(input))
 )

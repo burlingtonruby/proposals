@@ -1,7 +1,10 @@
 Proposals.VotingRoundRoute = Ember.Route.extend
   model: (params) ->
-    @store.find('round', params.round)
+    Ember.RSVP.hash(
+      round: @store.find('round', params.round)
+      proposals: @store.find('proposal')
+    )
 
   setupController: (controller, model) ->
-    controller.set('model', model)
-    controller.set('proposals', @store.find('proposal', {round: model.name}))
+    controller.set('round', model.round)
+    controller.set('proposals', model.proposals)

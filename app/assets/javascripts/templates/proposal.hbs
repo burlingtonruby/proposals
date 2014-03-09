@@ -31,7 +31,7 @@
     </div>
 
     <div {{bind-attr class=":pitch :content pitchActive:active"}}>
-      {{#if RoundView.controller.isAnonymous}}
+      {{#if RoundView.controller.round.isAnonymous}}
         <p>Pitch is not available during an anonymous voting round.</p>
       {{else}}
         {{unbound format-markdown pitch}}
@@ -39,7 +39,7 @@
     </div>
 
     <div {{bind-attr class=":user-info :content submitterActive:active"}}>
-      {{#if RoundView.controller.isAnonymous}}
+      {{#if RoundView.controller.round.isAnonymous}}
         <p>Submitter info is not available during an anonymous voting round.</p>
       {{else}}
         <dl>
