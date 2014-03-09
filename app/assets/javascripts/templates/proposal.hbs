@@ -2,10 +2,10 @@
   <h2 class="title">#{{unbound id}}. {{unbound title}}</h2>
 
   <dl class="tabs" data-tab>
-    <dd {{bind-attr class="abstractActive:active"}}><a {{action showAbstract}}>Abstract</a></dd>
-    <dd {{bind-attr class="notesActive:active"}}><a {{action showNotes}}>Notes</a></dd>
-    <dd {{bind-attr class="pitchActive:active"}}><a {{action showPitch}}>Pitch</a></dd>
-    <dd {{bind-attr class="submitterActive:active"}}><a {{action showSubmitter}}>Submitter</a></dd>
+    <dd {{bind-attr class="abstractActive:active"}}><a {{action 'showAbstract'}}>Abstract</a></dd>
+    <dd {{bind-attr class="notesActive:active"}}><a {{action 'showNotes'}}>Notes</a></dd>
+    <dd {{bind-attr class="pitchActive:active"}}><a {{action 'showPitch'}}>Pitch</a></dd>
+    <dd {{bind-attr class="submitterActive:active"}}><a {{action 'showSubmitter'}}>Submitter</a></dd>
     <dd class="actions">
     <span {{bind-attr class=":vote selected"}} {{action toggleVote}}>
       {{#if selected}}
@@ -15,7 +15,7 @@
       {{/if}}
     </span>
     {{#unless selected}}
-      <span class="hide" {{action hide}}>
+      <span class="hide" {{action 'hide'}}>
         <i class="fi-dislike"></i> Hide
       </span>
     {{/unless}}
