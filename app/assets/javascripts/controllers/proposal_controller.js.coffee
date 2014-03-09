@@ -5,13 +5,12 @@ Proposals.ProposalController = Ember.ObjectController.extend
   submitterActive: false
 
   actions:
-    toggleVote: ->
-      if @get('vote')
-        vote = @get('vote')
+    toggleVote: (vote, proposal)->
+      if vote
         vote.deleteRecord()
       else
         vote = @store.createRecord('vote',
-          proposal: @get('model')
+          proposal: proposal
         )
 
       vote.save().then(=>
