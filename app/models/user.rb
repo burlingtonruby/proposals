@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise
 
   has_many :proposals
+  has_many :votes
 
   validates :name, presence: true
   validates :email, presence: true, on: :update

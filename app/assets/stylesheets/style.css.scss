@@ -1,5 +1,25 @@
 @import 'foundation/components/global';
 @import 'foundation-icons';
+@import "foundation/components/buttons";
+@import "foundation/components/grid";
+
+.voting-status {
+  position: fixed;
+  left: 50%;
+  top: 5px;
+  margin-left: -200px;
+  z-index: 100;
+  text-align: center;
+  line-height: 35px;
+  color: #fff;
+  font-weight: bold;
+  width: 400px;
+  background-color: #333;
+  @include radius(3px);
+  &.completed {
+    background-color: $success-color;
+  }
+}
 
 textarea {
   resize: vertical;
@@ -8,4 +28,56 @@ textarea {
 
 [title=required] {
   color: $alert-color;
+}
+
+.tabs dd a {
+  font-weight: bold;
+}
+
+.tabs-content {
+  margin-bottom: 0;
+}
+
+.user-info dl {
+  overflow: hidden;
+  dt, dd {
+    float: left;
+  }
+  dt {
+    clear: left;
+    width: 75px;
+  }
+}
+
+.voting {
+  @include grid-row();
+  .proposal {
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    &.selected .title {
+      color: $success-color;
+    }
+  }
+  .tabs {
+    .active {
+      border: 1px solid #ccc;
+      border-bottom: none;
+    }
+    .actions span {
+      @include button($padding: 0.3rem, $radius: 5px);
+      margin: 15px 0 0 15px;
+      display: block;
+      float: left;
+      &.selected {
+        @include button-style($bg: $success-color);
+      }
+    }
+  }
+  .tabs-content {
+    border: 1px solid #ccc;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
 }

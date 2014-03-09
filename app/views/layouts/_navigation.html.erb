@@ -10,7 +10,10 @@
    <ul class="right">
      <% if current_user %>
        <% if current_user.admin? %>
-         <li data-no-turbolink><%= link_to "<i class='fi-lock'></i> Admin".html_safe, admin_root_url %></li>
+         <li><%= link_to "<i class='fi-lock'></i> Admin".html_safe, admin_root_url %></li>
+       <% end %>
+       <% if current_user.voter? %>
+         <li><%= link_to "<i class='fi-clipboard-pencil'></i> Voting".html_safe, voting_path %></li>
        <% end %>
        <li><%= link_to "Submit Proposal", new_proposal_path %></li>
        <li><%= link_to "Your Proposals", proposals_path %></li>

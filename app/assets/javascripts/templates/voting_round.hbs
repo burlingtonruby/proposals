@@ -1,0 +1,19 @@
+<div {{bind-attr class=":voting-status completedVoting:completed"}}>
+  <div>
+    You have voted for {{voteCount}} of {{round.totalVotes}} proposals
+  </div>
+</div>
+
+<div class="voting">
+  <div class="proposals">
+    <h1>Voting for {{round.text}}</h1>
+
+    {{#with view as RoundView}}
+      {{#each visibleProposals}}
+        {{render "proposal" this}}
+      {{else}}
+        Loading proposals...
+      {{/each}}
+    {{/with}}
+  </div>
+</div>

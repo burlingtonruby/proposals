@@ -28,4 +28,12 @@ module UserHelper
       render file: 'public/401.html', status: :unauthorized
     end
   end
+
+  def require_voter!
+    if current_user.blank?
+      require_authentication!
+    elsif !current_user.voter?
+      render file: 'public/401.html', status: :unauthorized
+    end
+  end
 end

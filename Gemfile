@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '~> 4.0.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -38,6 +38,15 @@ gem 'newrelic_rpm'
 # ActiveAdmin for managing proposals
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+# Enums
+gem "classy_enum", "~> 3.4.0"
+
+# Ember dependencies
+gem "ember-rails", "~> 0.14.1"
+gem "ember-source", "~> 1.5.0.beta.3"
+gem "ember-data-source", "~> 1.0.0.beta.7"
+gem "handlebars-source", "~> 1.3.0"
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor'
@@ -56,4 +65,6 @@ end
 
 group :test do
   gem 'capybara', '~> 2.2'
+  gem 'poltergeist', '~> 1.5'
+  gem 'launchy'
 end

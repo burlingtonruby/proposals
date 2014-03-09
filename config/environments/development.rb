@@ -28,4 +28,6 @@ Proposals::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { host: '127.0.0.1:3000' }
+
+  config.ember.variant = :development
 end

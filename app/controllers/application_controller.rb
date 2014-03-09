@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include UserHelper
+
+  helper_method :current_round
+
+  def current_round
+    Rails.configuration.current_round
+  end
 end
