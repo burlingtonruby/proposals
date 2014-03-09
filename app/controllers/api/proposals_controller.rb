@@ -1,6 +1,7 @@
 module Api
   class ProposalsController < ApplicationController
     respond_to :json
+    before_filter :require_voter!
 
     def index
       respond_with current_round.proposals,

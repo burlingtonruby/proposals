@@ -16,13 +16,10 @@ Proposals::Application.routes.draw do
     delete '/votes/:id' => 'votes#destroy'
   end
 
+  # Ember app root
   scope :voting do
     get '/' => 'voting#index', as: :voting
     get '/*catchall' => 'voting#index'
-
-    # resources :votes, path: '/:round/votes', only: [:index] do
-    #   post 'bulk_create' => 'votes#bulk_create', on: :collection
-    # end
   end
 
   match '/auth/:provider/callback' => 'sessions#create', via: %i(get post)

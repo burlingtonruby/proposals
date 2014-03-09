@@ -1,6 +1,7 @@
 module Api
   class RoundsController < ApplicationController
     respond_to :json
+    before_filter :require_voter!
 
     def index
       respond_with Round.map {|round| RoundSerializer.new(round).as_json(root: false) }

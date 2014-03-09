@@ -1,6 +1,7 @@
 module Api
   class VotesController < ApplicationController
     respond_to :json
+    before_filter :require_voter!
 
     def index
       respond_with current_user.votes, each_serializer: VotingSerializer
