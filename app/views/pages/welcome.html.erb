@@ -4,7 +4,7 @@
   <div class="small-12 columns">
     <h1>Burlington Ruby Conference 2014</h1>
     <h2>Call for Proposals</h2>
-    <% if DateTime.now < Proposals::Application.config.cutoff_date %>
+    <% unless past_cutoff_date? %>
       <h4>Closes <%= ApplicationHelper::CutoffDate %></h4>
     <% else %>
       <h4>Proposals are now closed.</h4>
@@ -13,7 +13,7 @@
 </div>
 <div class="row">
   <div class="small-12 medium-8 columns">
-    <% if DateTime.now < Proposals::Application.config.cutoff_date %>
+    <% unless past_cutoff_date?  %>
       <p>Are you interested in giving a talk at the <a
           href="http://burlingtonrubyconference.com">2014 Burlington Ruby
           Conference</a>? The conference takes place on August 1st - 3rd in
