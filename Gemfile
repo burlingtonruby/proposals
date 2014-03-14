@@ -67,4 +67,5 @@ group :test do
   gem 'capybara', '~> 2.2'
   gem 'poltergeist', '~> 1.5'
   gem 'launchy'
+  gem 'timecop'
 end

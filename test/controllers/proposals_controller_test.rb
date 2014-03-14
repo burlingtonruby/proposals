@@ -96,4 +96,44 @@ class ProposalsControllerTest < ActionController::TestCase
     delete :destroy, id: @rails_doesnt_scale.id
     assert_response 401
   end
+
+  test 'should not allow user to GET new proposal after close date' do
+    sign_in @brett
+
+    Timecop.freeze(Date.today + 400000) do
+      get :new
+      assert_redirected_to root_path
+      assert_equal "Proposals are closed, sorry.", flash[:alert]
+    end
+  end
+
+  test 'should not allow user to create a proposal after close date' do
+    sign_in @brett
+
+    Timecop.freeze(Date.today + 400000) do
+      post :create, proposal: { title: 'Great Talk', abstract: 'Best talk' }
+      assert_redirected_to root_path
+      assert_equal "Proposals are closed, sorry.", flash[:alert]
+    end
+  end
+
+  test 'should not allow user to edit a proposal after close date' do
+    sign_in @brett
+
+    Timecop.freeze(Date.today + 400000) do
+      get :edit, id: @rails_doesnt_scale
+      assert_redirected_to root_path
+      assert_equal "Proposals are closed, sorry.", flash[:alert]
+    end
+  end
+
+  test 'should not allow user to update a proposal after close date' do
+    sign_in @brett
+
+    Timecop.freeze(Date.today + 400000) do
+      patch :update, id: @rails_doesnt_scale.id, proposal: { title: "Rails Does Scale" }
+      assert_redirected_to root_path
+      assert_equal "Proposals are closed, sorry.", flash[:alert]
+    end
+  end
 end

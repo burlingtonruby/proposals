@@ -1,5 +1,6 @@
 class ProposalsController < ApplicationController
   before_filter :require_authentication!
+  before_filter :require_before_close_date!, only: [:create, :new, :edit, :update]
 
   def index
     @proposals = current_user.proposals
@@ -56,5 +57,11 @@ class ProposalsController < ApplicationController
   def proposal_params
     params.require(:proposal).permit(:title, :abstract, :notes, :pitch,
       user_attributes: [:name, :email, :photo, :website, :bio, :twitter, :github])
+  end
+
+  def require_before_close_date!
+    if Time.now > Proposals::Application.config.cutoff_date
+      redirect_to root_path, alert: "Proposals are closed, sorry."
+    end
   end
 end
