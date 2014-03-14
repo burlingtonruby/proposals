@@ -4,36 +4,44 @@
   <div class="small-12 columns">
     <h1>Burlington Ruby Conference 2014</h1>
     <h2>Call for Proposals</h2>
-    <h4>Closes <%= ApplicationHelper::CutoffDate %></h4>
+    <% if DateTime.now < Proposals::Application.config.cutoff_date %>
+      <h4>Closes <%= ApplicationHelper::CutoffDate %></h4>
+    <% else %>
+      <h4>Proposals are now closed.</h4>
+    <% end %>
   </div>
 </div>
 <div class="row">
   <div class="small-12 medium-8 columns">
-    <p>Are you interested in giving a talk at the <a
-        href="http://burlingtonrubyconference.com">2014 Burlington Ruby
-        Conference</a>? The conference takes place on August 1st - 3rd in
-      Burlington, Vermont. It is a single-track conference with six 30-minute
-      talks each day. The expected audience is 150 people, and we are looking
-      for eight additional speakers to join the current lineup.</p>
-    <p>The process for selecting speakers starts with a blind review, where the
-      the top 20 proposals are selected based solely on their abstracts. From
-      there, we will pick our 8 favorites that we think are the best fit for the
-      conference.</p>
-    <p>If you are interested in speaking, submit as many proposals as you would
-      like. Edit and delete submissions up until the date when the CFP closes
-      (<%= ApplicationHelper::CutoffDate %>). Lastly, all of the information you
-      enter will be used on the site if you are selected to speak. Be sure to
-      check for typos!</p>
-    <p>Thank you for taking the time to submit a proposal or few. We really
-      appreciate it. If you have any questions, do not hesitate to reach out to
-      us <a href="mailto:info@burlingtonrubyconference.com">by email</a> or <a
-        href="https://twitter.com/btvrubyconf">on Twitter</a>.</p>
+    <% if DateTime.now < Proposals::Application.config.cutoff_date %>
+      <p>Are you interested in giving a talk at the <a
+          href="http://burlingtonrubyconference.com">2014 Burlington Ruby
+          Conference</a>? The conference takes place on August 1st - 3rd in
+        Burlington, Vermont. It is a single-track conference with six 30-minute
+        talks each day. The expected audience is 150 people, and we are looking
+        for eight additional speakers to join the current lineup.</p>
+      <p>The process for selecting speakers starts with a blind review, where the
+        the top 20 proposals are selected based solely on their abstracts. From
+        there, we will pick our 8 favorites that we think are the best fit for the
+        conference.</p>
+      <p>If you are interested in speaking, submit as many proposals as you would
+        like. Edit and delete submissions up until the date when the CFP closes
+        (<%= ApplicationHelper::CutoffDate %>). Lastly, all of the information you
+        enter will be used on the site if you are selected to speak. Be sure to
+        check for typos!</p>
+      <p>Thank you for taking the time to submit a proposal or few. We really
+        appreciate it. If you have any questions, do not hesitate to reach out to
+        us <a href="mailto:info@burlingtonrubyconference.com">by email</a> or <a
+          href="https://twitter.com/btvrubyconf">on Twitter</a>.</p>
 
-    <% if current_user %>
-      <%= link_to "Submit a Proposal", new_proposal_path, class: "button" %>
+      <% if current_user %>
+        <%= link_to "Submit a Proposal", new_proposal_path, class: "button" %>
+      <% else %>
+        <%= link_to 'Sign Up w/ GitHub to Submit a
+          Proposal', '/auth/github', class: 'button primary' %>
+      <% end %>
     <% else %>
-      <%= link_to 'Sign Up w/ GitHub to Submit a
-        Proposal', '/auth/github', class: 'button primary' %>
+      <p>If you submitted a proposal, you will hear back from us either way. If you did not but wanted to, there is always next year. Thank you!</p>
     <% end %>
   </div>
 </div>
