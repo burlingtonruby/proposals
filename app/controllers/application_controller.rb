@@ -5,9 +5,13 @@ class ApplicationController < ActionController::Base
 
   include UserHelper
 
-  helper_method :current_round
+  helper_method :current_round, :past_cutoff_date?
 
   def current_round
     Rails.configuration.current_round
+  end
+
+  def past_cutoff_date?
+    DateTime.now > Proposals::Application.config.cutoff_date
   end
 end
