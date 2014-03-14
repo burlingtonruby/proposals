@@ -60,7 +60,7 @@ class ProposalsController < ApplicationController
   end
 
   def require_before_close_date!
-    if Time.now > Proposals::Application.config.cutoff_date
+    if DateTime.now > Proposals::Application.config.cutoff_date
       redirect_to root_path, alert: "Proposals are closed, sorry."
     end
   end
