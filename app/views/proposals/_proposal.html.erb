@@ -13,8 +13,10 @@
     <p><%= simple_format proposal.notes %></p>
   </div>
 
-  <ul class="button-group">
-    <li><%= link_to "Edit", edit_proposal_path(proposal), class: "button tiny secondary" %></li>
-    <li><%= link_to "Destroy", proposal, method: :delete, data: { confirm: "Are you sure?" }, class: "button tiny alert" %></li>
-  </ul>
+  <% unless past_cutoff_date? %>
+    <ul class="button-group">
+      <li><%= link_to "Edit", edit_proposal_path(proposal), class: "button tiny secondary" %></li>
+      <li><%= link_to "Destroy", proposal, method: :delete, data: { confirm: "Are you sure?" }, class: "button tiny alert" %></li>
+    </ul>
+  <% end %>
 </div>

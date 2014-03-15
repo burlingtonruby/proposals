@@ -1,7 +1,11 @@
 <div class="row">
   <div class="proposals small-12 columns">
     <h1>Your Proposals</h1>
-    <h4>CFP Closes on <%= ApplicationHelper::CutoffDate %></h4>
+    <% if past_cutoff_date? %>
+      <h4>Proposals are now closed.</h4>
+    <% else %>
+      <h4>Closes <%= ApplicationHelper::CutoffDate %></h4>
+    <% end %>
 
     <% if @proposals.blank? %>
       <p>Here is where you will see your proposals. You have not made one yet
@@ -14,6 +18,8 @@
       <%= render partial: 'proposal_list', collection: @proposals, as: :proposal %>
     </ul>
 
-    <%= link_to "Submit a Proposal", new_proposal_path, class: "button" %>
+    <% unless past_cutoff_date? %>
+      <%= link_to "Submit a Proposal", new_proposal_path, class: "button" %>
+    <% end %>
   </div>
 </div>
