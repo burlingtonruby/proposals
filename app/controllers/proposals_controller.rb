@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   before_filter :require_authentication!
-  before_filter :require_before_close_date!, only: [:create, :new, :edit, :update]
+  before_filter :require_before_close_date!, except: [:index, :show]
 
   def index
     @proposals = current_user.proposals

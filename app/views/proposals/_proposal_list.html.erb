@@ -3,6 +3,8 @@
   <div class="abstract"><%= simple_format proposal.abstract %></div>
   <ul class="button-group">
     <li><%= link_to "View", proposal, class: "button tiny" %></li>
-    <li><%= link_to "Edit", edit_proposal_path(proposal), class: "button tiny secondary" %></li>
+    <% unless past_cutoff_date? %>
+      <li><%= link_to "Edit", edit_proposal_path(proposal), class: "button tiny secondary" %></li>
+    <% end %>
   </ul>
 </li>

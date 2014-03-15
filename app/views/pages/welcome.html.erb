@@ -4,10 +4,10 @@
   <div class="small-12 columns">
     <h1>Burlington Ruby Conference 2014</h1>
     <h2>Call for Proposals</h2>
-    <% unless past_cutoff_date? %>
-      <h4>Closes <%= ApplicationHelper::CutoffDate %></h4>
-    <% else %>
+    <% if past_cutoff_date? %>
       <h4>Proposals are now closed.</h4>
+    <% else %>
+      <h4>Closes <%= ApplicationHelper::CutoffDate %></h4>
     <% end %>
   </div>
 </div>
