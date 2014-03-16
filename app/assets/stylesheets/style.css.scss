@@ -73,6 +73,9 @@ textarea {
       &.selected {
         @include button-style($bg: $success-color);
       }
+      &.hide {
+        @include button-style($bg: $alert-color);
+      }
     }
   }
   .tabs-content {
