@@ -8,11 +8,24 @@
   <div class="proposals">
     <h1>Voting for {{round.text}}</h1>
 
+    <dl class="filters">
+      <dt>Filter:</dt>
+      <dd {{bind-attr class="showAll:active"}}>
+        <a {{action 'setFilterBy' 'visible'}} href="#">All ({{allCount}})</a>
+      </dd>
+      <dd {{bind-attr class="showSelected:active"}}>
+        <a {{action 'setFilterBy' 'selected'}} href="#">Selected ({{voteCount}})</a>
+      </dd>
+      <dd {{bind-attr class="showHidden:active"}}>
+        <a {{action 'setFilterBy' 'hidden'}} href="#">Hidden ({{hiddenCount}})</a>
+      </dd>
+    </dl>
+
     {{#with view as RoundView}}
       {{#each visibleProposals}}
         {{render "proposal" this}}
       {{else}}
-        Loading proposals...
+        Nothing to see here...
       {{/each}}
     {{/with}}
   </div>

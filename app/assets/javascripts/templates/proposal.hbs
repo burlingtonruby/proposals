@@ -7,18 +7,21 @@
     <dd {{bind-attr class="pitchActive:active"}}><a {{action 'showPitch'}}>Pitch</a></dd>
     <dd {{bind-attr class="submitterActive:active"}}><a {{action 'showSubmitter'}}>Submitter</a></dd>
     <dd class="actions">
-    <span {{bind-attr class=":vote selected"}} {{action 'toggleVote' vote model}}>
-      {{#if selected}}
-        <i class="fi-checkbox"></i> Selected
-      {{else}}
-        <i class="fi-like"></i> Select
-      {{/if}}
-    </span>
-    {{#unless selected}}
-      <span class="hide" {{action 'hide'}}>
-        <i class="fi-dislike"></i> Hide
+      <span {{bind-attr class=":vote selected"}} {{action 'toggleVote' vote model}}>
+        {{#if selected}}
+          <i class="fi-checkbox"></i> Selected
+        {{else}}
+          <i class="fi-like"></i> Select
+        {{/if}}
       </span>
-    {{/unless}}
+
+      {{#unless selected}}
+        {{#if hidden}}
+          <span class="hide" {{action 'toggleHide'}}>Show</span>
+        {{else}}
+          <span class="hide" {{action 'toggleHide'}}><i class="fi-dislike"></i> Hide</span>
+        {{/if}}
+      {{/unless}}
     </dd>
   </dl>
 
