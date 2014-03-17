@@ -9,7 +9,4 @@ Proposals.Proposal = DS.Model.extend
   selected: DS.attr('boolean')
   vote: DS.belongsTo('vote')
   visible: true
-
-  hidden: (->
-    not @get('visible')
-  ).property('visible')
+  hidden: Ember.computed.equal('visible', false)
