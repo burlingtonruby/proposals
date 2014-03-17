@@ -2,6 +2,7 @@
 @import 'foundation-icons';
 @import "foundation/components/buttons";
 @import "foundation/components/grid";
+@import "foundation/components/sub-nav";
 
 .voting-status {
   position: fixed;
@@ -73,6 +74,9 @@ textarea {
       &.selected {
         @include button-style($bg: $success-color);
       }
+      &.hide {
+        @include button-style($bg: $alert-color);
+      }
     }
   }
   .tabs-content {
@@ -80,4 +84,8 @@ textarea {
     padding: 0 20px;
     margin-bottom: 20px;
   }
+}
+
+.filters {
+  @include sub-nav();
 }
