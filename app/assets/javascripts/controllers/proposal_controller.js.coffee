@@ -21,8 +21,19 @@ Proposals.ProposalController = Ember.ObjectController.extend
 
       false
 
-    toggleHide: ->
-      @toggleProperty('model.visible')
+    toggleHide: (hidden_vote, proposal)->
+      if hidden_vote
+        hidden_vote.deleteRecord()
+      else
+        hidden_vote = @store.createRecord('hidden_vote',
+          proposal: proposal
+        )
+
+      hidden_vote.save().then(=>
+        @toggleProperty('visible')
+      ).catch((error) ->
+        alert(error.responseText)
+      )
       false
 
     showAbstract: ->

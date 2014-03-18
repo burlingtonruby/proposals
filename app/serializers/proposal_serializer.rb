@@ -2,9 +2,10 @@ class ProposalSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :title, :abstract, :notes, :pitch, :user_name, :twitter,
-    :github, :selected
+    :github, :selected, :visible
 
   has_one :vote
+  has_one :hidden_vote
 
   def vote
     vote = options[:current_votes].detect { |vote| vote.proposal_id == object.id }
@@ -12,8 +13,18 @@ class ProposalSerializer < ActiveModel::Serializer
     VoteSerializer.new(vote)
   end
 
+  def hidden_vote
+    vote = options[:current_hidden_votes].detect { |vote| vote.proposal_id == object.id }
+    return if vote.nil?
+    HiddenVoteSerializer.new(vote)
+  end
+
   def selected
     vote.present?
+  end
+
+  def visible
+    hidden_vote.nil?
   end
 
   def pitch
