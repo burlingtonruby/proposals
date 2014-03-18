@@ -1,8 +1,8 @@
 ActiveAdmin.register Proposal do
-  permit_params :title, :abstract, :notes, :pitch
+  permit_params :title, :abstract, :notes, :pitch, :user_id
 
   form do |f|
-    f.inputs :title, :abstract, :notes, :pitch
+    f.inputs :title, :abstract, :notes, :pitch, :user
     f.actions
   end
 

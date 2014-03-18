@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :email, :bio, :website, :twitter, :github, :voter
+  permit_params :name, :email, :bio, :website, :twitter, :github, :voter, :photo
 
   index do
     column :name
@@ -9,8 +9,8 @@ ActiveAdmin.register User do
     default_actions
   end
 
-  form do |f|
-    f.inputs :name, :email, :bio, :website, :twitter, :github, :voter
+  form html: {enctype: "multipart/form-data" } do |f|
+    f.inputs :name, :email, :bio, :website, :twitter, :github, :voter, :photo
     f.actions
   end
 end
