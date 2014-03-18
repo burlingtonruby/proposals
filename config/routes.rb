@@ -14,6 +14,8 @@ Proposals::Application.routes.draw do
     get '/votes' => 'votes#index'
     post '/votes' => 'votes#create'
     delete '/votes/:id' => 'votes#destroy'
+    post '/hidden_votes' => 'hidden_votes#create'
+    delete '/hidden_votes/:id' => 'hidden_votes#destroy'
   end
 
   # Ember app root

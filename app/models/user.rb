@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :proposals
   has_many :votes
+  has_many :hidden_votes
 
   validates :name, presence: true
   validates :email, presence: true, on: :update

@@ -17,9 +17,9 @@
 
       {{#unless selected}}
         {{#if hidden}}
-          <span class="hide" {{action 'toggleHide'}}>Show</span>
+          <span class="hide" {{action 'toggleHide' hiddenVote model}}>Show</span>
         {{else}}
-          <span class="hide" {{action 'toggleHide'}}><i class="fi-dislike"></i> Hide</span>
+          <span class="hide" {{action 'toggleHide' hiddenVote model}}><i class="fi-dislike"></i> Hide</span>
         {{/if}}
       {{/unless}}
     </dd>

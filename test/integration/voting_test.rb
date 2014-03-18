@@ -45,4 +45,38 @@ class VotingTest < ActionDispatch::IntegrationTest
       find('li', text: title)
     end
   end
+
+  test 'Voter hides a proposal in round 1' do
+    visit root_path
+    click_link 'Sign In w/ GitHub'
+    click_link 'Voting'
+    click_link 'Cast your vote'
+
+    title = "PHP Forever"
+
+    proposal = Proposal.find_by(title: title)
+
+    within '.proposal', text: title do
+      find('span.hide').click
+    end
+
+    # wait until AJAX request completes
+    find('.filters', text: 'Hidden (1)')
+
+    within '.filters' do
+      click_link 'Hidden (1)'
+    end
+
+    assert_equal 1, @user.hidden_votes.where(round: :one).count
+
+    # Show proposal
+    within '.proposal', text: title do
+      find('span.hide').click
+    end
+
+    # wait until AJAX request completes
+    find('.filters', text: 'Hidden (0)')
+
+    assert_equal 0, @user.hidden_votes.where(round: :one).count
+  end
 end

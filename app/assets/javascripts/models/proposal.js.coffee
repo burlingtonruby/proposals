@@ -7,6 +7,7 @@ Proposals.Proposal = DS.Model.extend
   twitter: DS.attr('string')
   github: DS.attr('string')
   selected: DS.attr('boolean')
+  visible: DS.attr('boolean')
   vote: DS.belongsTo('vote')
-  visible: true
+  hiddenVote: DS.belongsTo('hidden_vote')
   hidden: Ember.computed.equal('visible', false)
