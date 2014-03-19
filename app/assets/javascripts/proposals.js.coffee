@@ -41,3 +41,19 @@ Ember.Handlebars.helper('format-markdown', (input) ->
   return unless input
   new Handlebars.SafeString(showdown.makeHtml(input))
 )
+
+Ember.Handlebars.helper('format-twitter', (input) ->
+  return unless input
+
+  input = input.replace(/@|.*\/+/, '')
+
+  new Handlebars.SafeString("<a href='https://twitter.com/#{input}'>@#{input}</a>")
+)
+
+Ember.Handlebars.helper('format-github', (input) ->
+  return unless input
+
+  input = input.replace(/.*\/+/, '')
+
+  new Handlebars.SafeString("<a href='https://github.com/#{input}'>#{input}</a>")
+)

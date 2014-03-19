@@ -47,16 +47,20 @@
       {{else}}
         <dl>
           <dt>Name</dt>
-          <dd>{{unbound user_name}}</dd>
+          <dd>{{unbound userName}}</dd>
           {{#if twitter}}
-            <dt>Twitter</dt>
-            <dd>{{unbound twitter}}</dd>
+            <dt><i class="fi-social-twitter"></i></dt>
+            <dd>{{unbound format-twitter twitter}}</dd>
           {{/if}}
           {{#if github}}
-            <dt>GitHub</dt>
-            <dd>{{unbound github}}</dd>
+            <dt><i class="fi-social-github"></i></dt>
+            <dd>{{unbound format-github github}}</dd>
           {{/if}}
         </dl>
+
+        <div class="bio">
+          {{unbound format-markdown userBio}}
+        </div>
       {{/if}}
     </div>
   </div>
