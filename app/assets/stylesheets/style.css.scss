@@ -39,14 +39,20 @@ textarea {
   margin-bottom: 0;
 }
 
-.user-info dl {
-  overflow: hidden;
-  dt, dd {
-    float: left;
+.user-info {
+  dl {
+    @include grid-column(4);
+    overflow: hidden;
+    dt, dd {
+      float: left;
+    }
+    dt {
+      clear: left;
+      width: 75px;
+    }
   }
-  dt {
-    clear: left;
-    width: 75px;
+  .bio {
+    @include grid-column(8);
   }
 }
 
