@@ -1,5 +1,9 @@
 class Round < ClassyEnum::Base
   include ActiveModel::Serialization
+
+  def completed?
+    self < Rails.configuration.current_round
+  end
 end
 
 class Round::One < Round

@@ -15,5 +15,10 @@ module Api
         current_votes: current_votes,
         current_hidden_votes: current_hidden_votes
     end
+
+    def show
+      proposal = Proposal.find(params[:id])
+      respond_with proposal, serializer: ProposalSerializer
+    end
   end
 end

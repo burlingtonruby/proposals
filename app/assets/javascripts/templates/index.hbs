@@ -4,11 +4,18 @@
       <div class="small-12 medium-6 columns">
         <h2>{{round.text}}</h2>
 
-        {{#if round.isCurrentRound}}
-          <p>Voting is now open for {{round.text}}. {{link-to "Cast your vote." "voting_round" round.id}}</p>
-        {{else}}
-          <p>Voting is closed for {{round.text}}.</p>
-        {{/if}}
+        <p>
+          {{#if round.isCurrentRound}}
+            Voting is now open for {{round.text}}. {{link-to "Cast your vote." "voting_round" round.id}}</p>
+          {{else}}
+            Voting is closed for {{round.text}}.
+          {{/if}}
+
+          {{#if round.isCompleted}}
+            {{link-to 'View results' 'voting_results' round.id}}
+          {{/if}}
+        </p>
+
 
         <h3>Your votes for {{round.text}}</h3>
         <ol>

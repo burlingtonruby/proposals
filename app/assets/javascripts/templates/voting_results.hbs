@@ -1,0 +1,17 @@
+<div class="voting">
+  <div class="results">
+    <h1>Voting Results for {{round.text}}</h1>
+
+    <ol>
+      {{#each results}}
+        <li>
+          [<span class="count">{{voteCount}} votes</span>]
+          {{link-to title 'proposals.show' id className="title"}}
+          {{#if userName}}by <span class="username">{{userName}}</span>{{/if}}
+        </li>
+      {{else}}
+        Loading...
+      {{/each}}
+    </ol>
+  </div>
+</div>

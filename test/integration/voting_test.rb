@@ -6,6 +6,14 @@ class VotingTest < ActionDispatch::IntegrationTest
 
     @user = users(:voter)
     login_user @user
+
+    # These tests assume the current round is 1
+    @prev_round = Rails.configuration.current_round
+    Rails.configuration.current_round = Round::One.new
+  end
+
+  teardown do
+    Rails.configuration.current_round = @prev_round
   end
 
   test 'Voter votes for proposals in round 1' do

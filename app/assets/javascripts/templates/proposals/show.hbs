@@ -1,0 +1,44 @@
+<div class="voting">
+  <div class="proposal-show">
+    <h1>{{title}}</h1>
+
+    {{#if userName}}
+      <div class="user-info content">
+        <h2>Submitter info</h2>
+        <dl>
+          <dt>Name</dt>
+          <dd>{{userName}}</dd>
+          {{#if twitter}}
+            <dt><i class="fi-social-twitter"></i></dt>
+            <dd>{{format-twitter twitter}}</dd>
+          {{/if}}
+          {{#if github}}
+            <dt><i class="fi-social-github"></i></dt>
+            <dd>{{format-github github}}</dd>
+          {{/if}}
+        </dl>
+
+        <div class="bio">
+          {{unbound format-markdown userBio}}
+        </div>
+      </div>
+    {{/if}}
+
+    <div class="content">
+      <h2>Abstract</h2>
+      {{format-markdown abstract}}
+    </div>
+
+    <div class="content">
+      <h2>Notes</h2>
+      {{format-markdown notes}}
+    </div>
+
+    {{#if pitch}}
+      <div class="content">
+        <h2>Pitch</h2>
+        {{format-markdown pitch}}
+      </div>
+    {{/if}}
+  </div>
+</div>
