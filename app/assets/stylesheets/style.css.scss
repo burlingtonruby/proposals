@@ -95,3 +95,15 @@ textarea {
 .filters {
   @include sub-nav();
 }
+
+.results {
+  .username {
+    font-weight: bold;
+  }
+}
+
+.proposal-show {
+  .content {
+    @include grid-column(12);
+  }
+}

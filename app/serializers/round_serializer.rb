@@ -1,7 +1,8 @@
 class RoundSerializer < ActiveModel::Serializer
   root false
 
-  attributes :id, :text, :total_votes, :is_anonymous, :is_current_round, :name
+  attributes :id, :text, :total_votes, :is_anonymous, :is_current_round, :name,
+    :is_completed
 
   def name
     object.to_s
@@ -13,6 +14,10 @@ class RoundSerializer < ActiveModel::Serializer
 
   def is_anonymous
     object.anonymous?
+  end
+
+  def is_completed
+    object.completed?
   end
 
   def is_current_round
