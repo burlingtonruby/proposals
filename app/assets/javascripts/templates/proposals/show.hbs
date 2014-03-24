@@ -8,6 +8,10 @@
         <dl>
           <dt>Name</dt>
           <dd>{{userName}}</dd>
+          {{#if website}}
+            <dt><i class="fi-web"></i></dt>
+            <dd>{{format-website website}}</dd>
+          {{/if}}
           {{#if twitter}}
             <dt><i class="fi-social-twitter"></i></dt>
             <dd>{{format-twitter twitter}}</dd>

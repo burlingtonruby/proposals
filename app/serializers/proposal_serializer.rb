@@ -2,7 +2,7 @@ class ProposalSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :title, :abstract, :notes, :pitch, :user_name, :twitter,
-    :github, :selected, :visible, :user_bio
+    :github, :selected, :visible, :user_bio, :website
 
   has_one :vote
   has_one :hidden_vote
@@ -41,6 +41,10 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def user_bio
     object.user_bio unless anonymous?
+  end
+
+  def website
+    object.user.website unless anonymous?
   end
 
   def twitter

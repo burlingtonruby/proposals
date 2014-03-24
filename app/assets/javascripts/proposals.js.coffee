@@ -36,3 +36,9 @@ Ember.Handlebars.helper('format-github', (input) ->
 
   new Handlebars.SafeString("<a href='https://github.com/#{input}'>#{input}</a>")
 )
+
+Ember.Handlebars.helper('format-website', (input) ->
+  return unless input
+
+  new Handlebars.SafeString("<a href='#{input}'>#{input}</a>")
+)

@@ -5,6 +5,7 @@ Proposals.Proposal = DS.Model.extend
   pitch: DS.attr('string')
   userName: DS.attr('string')
   userBio: DS.attr('string')
+  website: DS.attr('string')
   twitter: DS.attr('string')
   github: DS.attr('string')
   selected: DS.attr('boolean')
