@@ -47,3 +47,21 @@ class Round::Two < Round
     Proposal.where(round2: true).order(:title)
   end
 end
+
+class Round::Three < Round
+  def text
+    'Round 3'
+  end
+
+  def total_votes
+    0
+  end
+
+  def anonymous?
+    false
+  end
+
+  def proposals
+    Proposal.none
+  end
+end
